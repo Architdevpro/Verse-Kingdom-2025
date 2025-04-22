@@ -95,7 +95,7 @@
     </footer>
 <!-- Server Outage Announcement Popup -->
 <div id="announcement-popup" style="display:none; position: fixed; top: 20px; right: 20px; background-color: #f39c12; color: white; padding: 15px 25px; border-radius: 10px; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.2); font-family: sans-serif;">
-  Notice: Temporary server outage – site may load slowly.
+Notice: Tomorrow *23/04/2025* an interclass poem recitation competition will be organised, please prepare accordingly.
 </div>
 
 <script>
@@ -105,6 +105,20 @@
     setTimeout(() => {
       popup.style.display = 'none';
     }, 4000); // hide after 4 seconds
+  };
+</script>
+<!-- 23/04/2025 Activity Announcement  -->
+<div id="announcement-popup" style="display:none; position: fixed; top: 20px; right: 20px; background-color: #f39c12; color: white; padding: 15px 25px; border-radius: 10px; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.2); font-family: sans-serif;">
+  Notice: Temporary server outage – site may load slowly.
+</div>
+
+<script>
+  window.onload = function() {
+    const popup = document.getElementById('announcement-popup');
+    popup.style.display = 'block';
+    setTimeout(() => {
+      popup.style.display = 'none';
+    }, 12000); // hide after 12 seconds
   };
 </script>
 </body>
