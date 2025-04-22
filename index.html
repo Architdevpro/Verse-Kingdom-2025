@@ -47,6 +47,23 @@
             color: white;
             margin-top: 40px;
         }
+        .service-category {
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-category h3 {
+            font-size: 1.2em;
+            color: #2c3e50;
+        }
+
+        .service-category p {
+            font-size: 1em;
+            color: #555;
+        }
     </style>
 </head>
 <body>
@@ -70,12 +87,25 @@
 
     <section id="services">
         <h2>Our Services</h2>
-        <ul>
-            <li><strong>Homework & Schoolwork Help:</strong> Personalized assistance for all classes and subjects.</li>
-            <li><strong>Study Material:</strong> Access notes, guides, practice papers, and other resources.</li>
-            <li><strong>Stationary Booking:</strong> Pre-order pens, notebooks, and supplies at student-friendly prices.</li>
-            <li><strong>Support / Helpline:</strong> Reach out anytime for academic or logistic support.</li>
-        </ul>
+        <div class="service-category">
+            <h3>1. Homework Help</h3>
+            <p><strong>Personalized Assistance:</strong> Get help with homework for all classes and subjects, making sure you stay on track with your studies.</p>
+        </div>
+
+        <div class="service-category">
+            <h3>2. School Work Assistance</h3>
+            <p><strong>Schoolwork Support:</strong> Receive guidance on school assignments, projects, and other academic tasks to improve your learning experience.</p>
+        </div>
+
+        <div class="service-category">
+            <h3>3. Teacher's Notices</h3>
+            <p><strong>Important Updates:</strong> Stay updated with the latest teacher notices, class schedules, and other essential academic information.</p>
+        </div>
+
+        <div class="service-category">
+            <h3>4. Exam & Practice Papers</h3>
+            <p><strong>Practice Materials:</strong> Access practice papers, mock exams, and revision guides to help you prepare effectively for your exams.</p>
+        </div>
     </section>
 
     <section id="about">
@@ -93,29 +123,30 @@
     <footer>
         <p>&copy; 2025 Study Point Group. All rights reserved.</p>
     </footer>
-<!-- Announcements -->
-<div id="announcement1" style="display:none; position: fixed; top: 20px; right: 20px; background-color: #f39c12; color: white; padding: 15px 25px; border-radius: 10px; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.2); font-family: sans-serif;">
-  Notice: Tomorrow *23/04/2025* an interclass poem recitation competition will be organised, please prepare accordingly.
-</div>
 
-<div id="announcement2" style="display:none; position: fixed; bottom: 20px; right: 20px; background-color: #e74c3c; color: white; padding: 15px 25px; border-radius: 10px; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.2); font-family: sans-serif;">
-  Notice: Temporary server outage – site may load slowly.
-</div>
+    <!-- Announcements -->
+    <div id="announcement1" style="display:none; position: fixed; top: 20px; right: 20px; background-color: #f39c12; color: white; padding: 15px 25px; border-radius: 10px; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.2); font-family: sans-serif;">
+      Notice: Tomorrow *23/04/2025* an interclass poem recitation competition will be organised, please prepare accordingly.
+    </div>
 
-<script>
-  window.onload = function() {
-    const announcement1 = document.getElementById('announcement1');
-    const announcement2 = document.getElementById('announcement2');
+    <div id="announcement2" style="display:none; position: fixed; bottom: 20px; right: 20px; background-color: #e74c3c; color: white; padding: 15px 25px; border-radius: 10px; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.2); font-family: sans-serif;">
+      Notice: Temporary server outage – site may load slowly.
+    </div>
 
-    announcement1.style.display = 'block';
-    setTimeout(() => {
-      announcement1.style.display = 'none';
-      announcement2.style.display = 'block';
-      setTimeout(() => {
-        announcement2.style.display = 'none';
-      }, 8000); // display second popup for 8 seconds
-    }, 4000); // display first popup for 4 seconds
-  };
-</script>
+    <script>
+      window.onload = function() {
+        const announcement1 = document.getElementById('announcement1');
+        const announcement2 = document.getElementById('announcement2');
+
+        announcement1.style.display = 'block';
+        setTimeout(() => {
+          announcement1.style.display = 'none';
+          announcement2.style.display = 'block';
+          setTimeout(() => {
+            announcement2.style.display = 'none';
+          }, 8000); // display second popup for 8 seconds
+        }, 4000); // display first popup for 4 seconds
+      };
+    </script>
 </body>
 </html>
