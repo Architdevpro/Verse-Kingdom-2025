@@ -5,54 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Study Point Group</title>
   <style>
-    * {
-      box-sizing: border-box;
-      transition: all 0.3s ease;
-    }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
       background-color: #eef2f3;
       color: #333;
-      animation: fadeIn 1s ease-in-out;
     }
-
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-
-    header, footer {
+    header {
       background-color: #2c3e50;
       color: white;
-      text-align: center;
       padding: 20px 0;
+      text-align: center;
     }
-
     nav {
       background-color: #34495e;
       padding: 10px;
       text-align: center;
     }
-
     nav a {
       color: white;
       text-decoration: none;
       margin: 0 20px;
       font-weight: bold;
-      position: relative;
       cursor: pointer;
     }
-
     nav a:hover {
       text-decoration: underline;
     }
-
     main {
       padding: 30px 15px;
     }
-
     section {
       background-color: white;
       max-width: 1000px;
@@ -60,82 +43,56 @@
       padding: 30px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
       border-radius: 10px;
-      animation: slideUp 0.8s ease;
+      display: none;
     }
-
-    @keyframes slideUp {
-      from {transform: translateY(20px); opacity: 0;}
-      to {transform: translateY(0); opacity: 1;}
+    section.active {
+      display: block;
     }
-
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #2c3e50;
+      color: white;
+      margin-top: 40px;
+    }
     .form-group {
       margin-bottom: 15px;
     }
-
-    input, textarea {
+    .form-group input, .form-group textarea {
       width: 100%;
       padding: 10px;
       border-radius: 5px;
       border: 1px solid #ccc;
     }
-
-    button {
-      padding: 10px 20px;
-      border: none;
+    .btn {
       background-color: #2c3e50;
       color: white;
+      padding: 10px 15px;
+      border: none;
       border-radius: 5px;
       cursor: pointer;
     }
-
-    .admin-section {
-      display: none;
-    }
-
-    .request-item {
-      border: 1px solid #ccc;
-      padding: 15px;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      background-color: #f9f9f9;
-    }
-
-    .status-buttons button {
-      margin-right: 10px;
-    }
-
-    .status {
-      margin-top: 10px;
-      font-weight: bold;
-    }
-
-    /* Admin Login */
-    #admin-login {
-      display: none;
-      background-color: rgba(0,0,0,0.5);
+    .admin-login {
       position: fixed;
-      inset: 0;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
       display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 1000;
+      display: none;
     }
-
-    #admin-box {
+    .admin-box {
       background: white;
-      padding: 30px;
+      padding: 20px;
       border-radius: 10px;
       text-align: center;
-      animation: pop 0.5s ease;
     }
-
-    @keyframes pop {
-      from {transform: scale(0.8); opacity: 0;}
-      to {transform: scale(1); opacity: 1;}
-    }
-
-    .hidden {
-      display: none;
+    #admin-panel .request {
+      background: #f2f2f2;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 8px;
     }
   </style>
 </head>
@@ -151,43 +108,72 @@
     <a onclick="showSection('services')">Services</a>
     <a onclick="showSection('about')">About</a>
     <a onclick="showSection('contact')">Contact</a>
+    <a onclick="showSection('announcements')">Announcements</a>
     <a onclick="showSection('change-username')">Change Username</a>
-    <a onclick="showLogin()">Admin Panel</a>
+    <a onclick="showAdminLogin()">Admin Panel</a>
   </nav>
 
   <main>
-    <section id="home">
+    <section id="home" class="active">
       <h2>Welcome to Study Point</h2>
-      <p>Support for your academics with quality materials and help.</p>
+      <p>We are a community dedicated to supporting students with all their academic needs.</p>
     </section>
 
-    <section id="services" class="hidden">
+    <section id="services">
       <h2>Our Services</h2>
-      <p>Homework Help, Projects, Study Material, Notices & More!</p>
+      <ul>
+        <li>Homework Help</li>
+        <li>School Work Assistance</li>
+        <li>Teacher Notices</li>
+        <li>Exam & Practice Papers</li>
+      </ul>
     </section>
 
-    <section id="about" class="hidden">
-      <h2>About Us</h2>
-      <p>Study Point Group is here to ease your academic journey.</p>
+    <section id="about">
+      <h2>About Study Point</h2>
+      <p>We aim to make studying easier, accessible, and organized for students.</p>
     </section>
 
-    <section id="contact" class="hidden">
+    <section id="contact">
       <h2>Contact Us</h2>
-      <p>Email: architchoudharybcs@gmail.com</p>
+      <p>Email: <a href="mailto:architchoudharybcs@gmail.com">architchoudharybcs@gmail.com</a></p>
     </section>
 
-    <section id="change-username" class="hidden">
+    <section id="announcements">
+      <h2>Latest Announcements</h2>
+      <div id="announcement-list"></div>
+    </section>
+
+    <section id="change-username">
       <h2>Change Username Request</h2>
-      <div class="form-group"><input id="oldName" placeholder="Old Username"></div>
-      <div class="form-group"><input id="newName" placeholder="New Username"></div>
-      <div class="form-group"><input id="email" placeholder="Email ID"></div>
-      <div class="form-group"><textarea id="reason" placeholder="Reason to change username"></textarea></div>
-      <button onclick="submitRequest()">Submit</button>
+      <div class="form-group">
+        <input type="text" id="old-username" placeholder="Old Username">
+      </div>
+      <div class="form-group">
+        <input type="text" id="new-username" placeholder="New Username">
+      </div>
+      <div class="form-group">
+        <textarea id="reason" placeholder="Reason to change username"></textarea>
+      </div>
+      <div class="form-group">
+        <input type="email" id="email" placeholder="Email ID">
+      </div>
+      <button class="btn" onclick="submitRequest()">Submit Request</button>
     </section>
 
-    <section id="admin-panel" class="admin-section hidden">
-      <h2>Admin Panel - Change Username Requests</h2>
-      <div id="requests"></div>
+    <section id="admin-panel">
+      <h2>Admin Panel</h2>
+      <div>
+        <h3>Username Change Requests</h3>
+        <div id="request-list"></div>
+      </div>
+      <hr>
+      <div>
+        <h3>Post Announcement</h3>
+        <textarea id="announcement-input" placeholder="Enter announcement..." rows="4"></textarea>
+        <br>
+        <button class="btn" onclick="postAnnouncement()">Post Announcement</button>
+      </div>
     </section>
   </main>
 
@@ -195,69 +181,93 @@
     <p>&copy; 2025 Study Point Group. All rights reserved.</p>
   </footer>
 
-  <div id="admin-login">
-    <div id="admin-box">
+  <div class="admin-login" id="admin-login">
+    <div class="admin-box">
       <h3>Admin Login</h3>
       <input type="text" id="admin-user" placeholder="Username"><br><br>
       <input type="password" id="admin-pass" placeholder="Password"><br><br>
-      <button onclick="checkLogin()">Login</button>
+      <button class="btn" onclick="checkAdmin()">Login</button>
+      <br><br>
+      <button class="btn" onclick="cancelAdmin()">Cancel</button>
     </div>
   </div>
 
   <script>
+    const requests = [];
+    const announcements = [];
+
     function showSection(id) {
-      document.querySelectorAll('section').forEach(sec => sec.classList.add('hidden'));
-      document.getElementById(id).classList.remove('hidden');
+      document.querySelectorAll('main section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
     }
 
-    function showLogin() {
-      document.getElementById('admin-login').style.display = 'flex';
+    function submitRequest() {
+      const oldU = document.getElementById('old-username').value;
+      const newU = document.getElementById('new-username').value;
+      const reason = document.getElementById('reason').value;
+      const email = document.getElementById('email').value;
+
+      requests.push({ oldU, newU, reason, email });
+      alert("Request submitted successfully!");
     }
 
-    function checkLogin() {
-      const user = document.getElementById('admin-user').value;
-      const pass = document.getElementById('admin-pass').value;
+    function showAdminLogin() {
+      document.getElementById("admin-login").style.display = "flex";
+    }
+
+    function cancelAdmin() {
+      document.getElementById("admin-login").style.display = "none";
+      showSection('home');
+    }
+
+    function checkAdmin() {
+      const user = document.getElementById("admin-user").value;
+      const pass = document.getElementById("admin-pass").value;
+
       if (user === "Architdevpro.github" && pass === "Ksian989") {
-        document.getElementById('admin-login').style.display = 'none';
-        showSection('admin-panel');
+        document.getElementById("admin-login").style.display = "none";
+        showSection("admin-panel");
+        loadRequests();
+        loadAnnouncements();
       } else {
         alert("Incorrect credentials");
       }
     }
 
-    function submitRequest() {
-      const oldName = document.getElementById('oldName').value;
-      const newName = document.getElementById('newName').value;
-      const email = document.getElementById('email').value;
-      const reason = document.getElementById('reason').value;
-
-      const reqDiv = document.createElement('div');
-      reqDiv.className = 'request-item';
-      reqDiv.innerHTML = `
-        <p><strong>Old Username:</strong> ${oldName}</p>
-        <p><strong>New Username:</strong> ${newName}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Reason:</strong> ${reason}</p>
-        <div class="status-buttons">
-          <button onclick="updateStatus(this, 'Approved')">Approve</button>
-          <button onclick="updateStatus(this, 'Rejected')">Reject</button>
-          <button onclick="updateStatus(this, 'Under Processing')">Under Processing</button>
-        </div>
-        <div class="status"></div>
-      `;
-      document.getElementById('requests').appendChild(reqDiv);
-
-      // Reset form
-      document.getElementById('oldName').value = '';
-      document.getElementById('newName').value = '';
-      document.getElementById('email').value = '';
-      document.getElementById('reason').value = '';
-      alert('Request Submitted');
+    function loadRequests() {
+      const container = document.getElementById("request-list");
+      container.innerHTML = "";
+      requests.forEach((r, i) => {
+        container.innerHTML += `
+          <div class="request">
+            <p><strong>Old:</strong> ${r.oldU}</p>
+            <p><strong>New:</strong> ${r.newU}</p>
+            <p><strong>Reason:</strong> ${r.reason}</p>
+            <p><strong>Email:</strong> ${r.email}</p>
+            <button class="btn">Approve</button>
+            <button class="btn">Reject</button>
+            <button class="btn">Under Processing</button>
+          </div>
+        `;
+      });
     }
 
-    function updateStatus(btn, status) {
-      const container = btn.closest('.request-item');
-      container.querySelector('.status').textContent = `Status: ${status}`;
+    function postAnnouncement() {
+      const content = document.getElementById("announcement-input").value.trim();
+      if (content) {
+        announcements.push(content);
+        document.getElementById("announcement-input").value = "";
+        loadAnnouncements();
+        alert("Announcement posted!");
+      }
+    }
+
+    function loadAnnouncements() {
+      const list = document.getElementById("announcement-list");
+      list.innerHTML = "";
+      announcements.forEach(text => {
+        list.innerHTML += `<p>${text}</p>`;
+      });
     }
   </script>
 
