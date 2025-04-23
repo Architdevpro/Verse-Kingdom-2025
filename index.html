@@ -28,6 +28,17 @@
       text-decoration: none;
       margin: 0 20px;
       font-weight: bold;
+      position: relative;
+    }
+    nav a#important::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -10px;
+      width: 8px;
+      height: 8px;
+      background-color: red;
+      border-radius: 50%;
     }
     nav a:hover {
       text-decoration: underline;
@@ -65,6 +76,25 @@
       font-size: 1em;
       color: #555;
     }
+
+    /* Announcements section */
+    #announcements .announcement-item {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+    #announcements .announcement-item h4 {
+      margin: 0;
+      color: #2c3e50;
+    }
+    #announcements .announcement-content {
+      margin-top: 10px;
+      color: #555;
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -79,6 +109,7 @@
     <a href="#services">Services</a>
     <a href="#about">About</a>
     <a href="#contact">Contact</a>
+    <a id="important" href="#announcements">Announcements</a>
     <a href="#forum">Forum</a>
   </nav>
 
@@ -120,6 +151,28 @@
       <p>Location: Greater Noida, India</p>
     </section>
 
+    <section id="announcements">
+      <h2>Latest Announcements</h2>
+      <div class="announcement-item" onclick="toggleAnnouncement(this)">
+        <h4>Homework Reminder</h4>
+        <div class="announcement-content">
+          <ul>
+            <li>Complete Mathematics Exercise 2.3</li>
+            <li>Complete Hindi Question and Answers of Chapter 7</li>
+            <li>Complete Physics In-text Questions</li>
+            <li>Prepare for English Revision Test on Tenses</li>
+            <li>Prepare for Biology Revision Test on Cell</li>
+          </ul>
+        </div>
+      </div>
+      <div class="announcement-item" onclick="toggleAnnouncement(this)">
+        <h4>Server Notice</h4>
+        <div class="announcement-content">
+          <p>Temporary server outage – site may load slowly.</p>
+        </div>
+      </div>
+    </section>
+
     <section id="forum">
       <h2>Live Chat Room</h2>
       <div id="chat-box" style="max-height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; background-color: #fff; border-radius: 8px; margin-bottom: 10px;"></div>
@@ -134,34 +187,14 @@
     <p>&copy; 2025 Study Point Group. All rights reserved.</p>
   </footer>
 
-  <!-- Announcements -->
-  <div id="announcement1" style="display:none; position: fixed; top: 20px; right: 20px; background-color: #f39c12; color: white; padding: 15px 25px; border-radius: 10px; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.2); font-family: sans-serif;">
-    Gentle Reminder:- 
-      1. Complete Mathematics Exercise 2.3<br>
-      2. Complete Hindi Q&A of Chapter 7<br>
-      3. Complete Physics In-text Questions<br>
-      4. Prepare for English Test on Tenses<br>
-      5. Prepare for Biology Test on Cell
-  </div>
-
-  <div id="announcement2" style="display:none; position: fixed; bottom: 20px; right: 20px; background-color: #e74c3c; color: white; padding: 15px 25px; border-radius: 10px; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.2); font-family: sans-serif;">
-    Notice: Temporary server outage – site may load slowly.
-  </div>
-
   <script>
-    // Announcement display logic
-    document.addEventListener('DOMContentLoaded', () => {
-      const announcement1 = document.getElementById('announcement1');
-      const announcement2 = document.getElementById('announcement2');
+    // Toggle announcements
+    function toggleAnnouncement(element) {
+      const content = element.querySelector('.announcement-content');
+      content.style.display = content.style.display === 'none' ? 'block' : 'none';
+    }
 
-      announcement1.style.display = 'block';
-      setTimeout(() => {
-        announcement1.style.display = 'none';
-        announcement2.style.display = 'block';
-      }, 4000);
-    });
-
-    // Forum chat logic
+    // Forum chat
     function sendMessage() {
       const username = document.getElementById('username').value.trim();
       const chatInput = document.getElementById('chat-input');
