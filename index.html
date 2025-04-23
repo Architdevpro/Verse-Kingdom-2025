@@ -5,47 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Study Point Group</title>
   <style>
+    * {
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
       background-color: #eef2f3;
       color: #333;
+      animation: fadeIn 1s ease-in-out;
     }
-    header {
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    header, footer {
       background-color: #2c3e50;
       color: white;
-      padding: 20px 0;
       text-align: center;
+      padding: 20px 0;
     }
+
     nav {
       background-color: #34495e;
       padding: 10px;
       text-align: center;
     }
+
     nav a {
       color: white;
       text-decoration: none;
       margin: 0 20px;
       font-weight: bold;
       position: relative;
+      cursor: pointer;
     }
-    nav a#important::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: -10px;
-      width: 8px;
-      height: 8px;
-      background-color: red;
-      border-radius: 50%;
-    }
+
     nav a:hover {
       text-decoration: underline;
     }
+
     main {
       padding: 30px 15px;
     }
+
     section {
       background-color: white;
       max-width: 1000px;
@@ -53,68 +60,82 @@
       padding: 30px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
       border-radius: 10px;
+      animation: slideUp 0.8s ease;
     }
-    footer {
-      text-align: center;
-      padding: 15px;
+
+    @keyframes slideUp {
+      from {transform: translateY(20px); opacity: 0;}
+      to {transform: translateY(0); opacity: 1;}
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
       background-color: #2c3e50;
       color: white;
-      margin-top: 40px;
-    }
-    .service-category {
-      margin-bottom: 20px;
-      background-color: #f9f9f9;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-    }
-    #announcements .announcement-item {
-      background-color: #f9f9f9;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
-      margin-bottom: 10px;
+      border-radius: 5px;
       cursor: pointer;
     }
-    .announcement-content.hidden {
+
+    .admin-section {
       display: none;
     }
-    .announcement-content {
-      margin-top: 10px;
-      color: #555;
+
+    .request-item {
+      border: 1px solid #ccc;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      background-color: #f9f9f9;
     }
-    #login-modal {
+
+    .status-buttons button {
+      margin-right: 10px;
+    }
+
+    .status {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    /* Admin Login */
+    #admin-login {
+      display: none;
+      background-color: rgba(0,0,0,0.5);
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(0,0,0,0.6);
+      inset: 0;
       display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 10000;
+      z-index: 1000;
     }
-    #login-box {
-      background-color: white;
+
+    #admin-box {
+      background: white;
       padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
       text-align: center;
+      animation: pop 0.5s ease;
     }
-    #login-box input {
-      padding: 10px;
-      border-radius: 5px;
-      width: 80%;
-      margin-bottom: 15px;
+
+    @keyframes pop {
+      from {transform: scale(0.8); opacity: 0;}
+      to {transform: scale(1); opacity: 1;}
     }
-    #login-box button {
-      padding: 10px 20px;
-      background-color: #2c3e50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
+
+    .hidden {
+      display: none;
     }
   </style>
 </head>
@@ -126,79 +147,47 @@
   </header>
 
   <nav>
-    <a href="#home">Home</a>
-    <a href="#services">Services</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-    <a id="important" href="#announcements">Announcements</a>
-    <a href="#forum">Forum</a>
+    <a onclick="showSection('home')">Home</a>
+    <a onclick="showSection('services')">Services</a>
+    <a onclick="showSection('about')">About</a>
+    <a onclick="showSection('contact')">Contact</a>
+    <a onclick="showSection('change-username')">Change Username</a>
+    <a onclick="showLogin()">Admin Panel</a>
   </nav>
 
   <main>
     <section id="home">
       <h2>Welcome to Study Point</h2>
-      <p>We are a community dedicated to supporting students with all their academic needs, from homework help to quality study materials and more.</p>
+      <p>Support for your academics with quality materials and help.</p>
     </section>
 
-    <section id="services">
+    <section id="services" class="hidden">
       <h2>Our Services</h2>
-      <div class="service-category">
-        <h3>1. Homework Help</h3>
-        <p><strong>Personalized Assistance:</strong> Get help with homework for all classes and subjects, making sure you stay on track with your studies.</p>
-      </div>
-      <div class="service-category">
-        <h3>2. School Work Assistance</h3>
-        <p><strong>Schoolwork Support:</strong> Receive guidance on school assignments, projects, and other academic tasks to improve your learning experience.</p>
-      </div>
-      <div class="service-category">
-        <h3>3. Teacher's Notices</h3>
-        <p><strong>Important Updates:</strong> Stay updated with the latest teacher notices, class schedules, and other essential academic information.</p>
-      </div>
-      <div class="service-category">
-        <h3>4. Exam & Practice Papers</h3>
-        <p><strong>Practice Materials:</strong> Access practice papers, mock exams, and revision guides to help you prepare effectively for your exams.</p>
-      </div>
+      <p>Homework Help, Projects, Study Material, Notices & More!</p>
     </section>
 
-    <section id="about">
-      <h2>About Study Point</h2>
-      <p>Study Point Group is a hub for students looking for extra academic help and convenient services. Our goal is to make studying easier, more accessible, and more organized for students of all ages.</p>
+    <section id="about" class="hidden">
+      <h2>About Us</h2>
+      <p>Study Point Group is here to ease your academic journey.</p>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="hidden">
       <h2>Contact Us</h2>
-      <p>Email: <a href="mailto:architchoudharybcs@gmail.com">architchoudharybcs@gmail.com</a></p>
-      <p>Phone: Not available</p>
-      <p>Location: Greater Noida, India</p>
+      <p>Email: architchoudharybcs@gmail.com</p>
     </section>
 
-    <section id="announcements">
-      <h2>Latest Announcements</h2>
-      <div class="announcement-item" onclick="toggleAnnouncement(this)">
-        <h4>Homework Reminder</h4>
-        <div class="announcement-content hidden">
-          <ul>
-            <li>Complete Mathematics Exercise 2.3</li>
-            <li>Complete Hindi Question and Answers of Chapter 7</li>
-            <li>Complete Physics In-text Questions</li>
-            <li>Prepare for English Revision Test on Tenses</li>
-            <li>Prepare for Biology Revision Test on Cell</li>
-          </ul>
-        </div>
-      </div>
-      <div class="announcement-item" onclick="toggleAnnouncement(this)">
-        <h4>Server Notice</h4>
-        <div class="announcement-content hidden">
-          <p>Temporary server outage – site may load slowly.</p>
-        </div>
-      </div>
+    <section id="change-username" class="hidden">
+      <h2>Change Username Request</h2>
+      <div class="form-group"><input id="oldName" placeholder="Old Username"></div>
+      <div class="form-group"><input id="newName" placeholder="New Username"></div>
+      <div class="form-group"><input id="email" placeholder="Email ID"></div>
+      <div class="form-group"><textarea id="reason" placeholder="Reason to change username"></textarea></div>
+      <button onclick="submitRequest()">Submit</button>
     </section>
 
-    <section id="forum">
-      <h2>Live Chat Room</h2>
-      <div id="chat-box" style="max-height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; background-color: #fff; border-radius: 8px; margin-bottom: 10px;"></div>
-      <input type="text" id="chat-input" placeholder="Type a message..." style="width: 70%; padding: 10px; border-radius: 5px;" disabled />
-      <button onclick="sendMessage()" id="send-btn" style="padding: 10px 15px; border: none; background-color: #2c3e50; color: white; border-radius: 5px;" disabled>Send</button>
+    <section id="admin-panel" class="admin-section hidden">
+      <h2>Admin Panel - Change Username Requests</h2>
+      <div id="requests"></div>
     </section>
   </main>
 
@@ -206,63 +195,69 @@
     <p>&copy; 2025 Study Point Group. All rights reserved.</p>
   </footer>
 
-  <div id="login-modal">
-    <div id="login-box">
-      <h3>Enter your name to join the chat</h3>
-      <input type="text" id="login-name" placeholder="Your Name..." />
-      <br>
-      <button onclick="loginUser()">Enter Chat</button>
+  <div id="admin-login">
+    <div id="admin-box">
+      <h3>Admin Login</h3>
+      <input type="text" id="admin-user" placeholder="Username"><br><br>
+      <input type="password" id="admin-pass" placeholder="Password"><br><br>
+      <button onclick="checkLogin()">Login</button>
     </div>
   </div>
 
   <script>
-    let username = "";
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+    }
 
-    window.onload = () => {
-      const savedName = localStorage.getItem('spg_username');
-      if (savedName) {
-        username = savedName;
-        document.getElementById('login-modal').style.display = 'none';
-        document.getElementById('chat-input').disabled = false;
-        document.getElementById('send-btn').disabled = false;
-        document.getElementById('chat-input').focus();
-        addMessage("System", `Welcome back, ${username}!`);
+    function showLogin() {
+      document.getElementById('admin-login').style.display = 'flex';
+    }
+
+    function checkLogin() {
+      const user = document.getElementById('admin-user').value;
+      const pass = document.getElementById('admin-pass').value;
+      if (user === "Architdevpro.github" && pass === "Ksian989") {
+        document.getElementById('admin-login').style.display = 'none';
+        showSection('admin-panel');
+      } else {
+        alert("Incorrect credentials");
       }
-    };
-
-    function toggleAnnouncement(element) {
-      const content = element.querySelector('.announcement-content');
-      content.classList.toggle('hidden');
     }
 
-    function loginUser() {
-      const name = document.getElementById('login-name').value.trim();
-      if (!name) return;
-      username = name;
-      localStorage.setItem('spg_username', username);
-      document.getElementById('login-modal').style.display = 'none';
-      document.getElementById('chat-input').disabled = false;
-      document.getElementById('send-btn').disabled = false;
-      document.getElementById('chat-input').focus();
-      addMessage("System", `Welcome, ${username}!`);
+    function submitRequest() {
+      const oldName = document.getElementById('oldName').value;
+      const newName = document.getElementById('newName').value;
+      const email = document.getElementById('email').value;
+      const reason = document.getElementById('reason').value;
+
+      const reqDiv = document.createElement('div');
+      reqDiv.className = 'request-item';
+      reqDiv.innerHTML = `
+        <p><strong>Old Username:</strong> ${oldName}</p>
+        <p><strong>New Username:</strong> ${newName}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Reason:</strong> ${reason}</p>
+        <div class="status-buttons">
+          <button onclick="updateStatus(this, 'Approved')">Approve</button>
+          <button onclick="updateStatus(this, 'Rejected')">Reject</button>
+          <button onclick="updateStatus(this, 'Under Processing')">Under Processing</button>
+        </div>
+        <div class="status"></div>
+      `;
+      document.getElementById('requests').appendChild(reqDiv);
+
+      // Reset form
+      document.getElementById('oldName').value = '';
+      document.getElementById('newName').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('reason').value = '';
+      alert('Request Submitted');
     }
 
-    function sendMessage() {
-      const input = document.getElementById('chat-input');
-      const text = input.value.trim();
-      if (!text) return;
-      const safeText = text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-      addMessage(username, safeText);
-      input.value = '';
-    }
-
-    function addMessage(sender, message) {
-      const chatBox = document.getElementById('chat-box');
-      const msg = document.createElement('div');
-      const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      msg.innerHTML = `<strong>${sender}:</strong> ${message} <span style="float:right; color:#999; font-size: 0.8em;">${time}</span>`;
-      chatBox.appendChild(msg);
-      chatBox.scroll({ top: chatBox.scrollHeight, behavior: 'smooth' });
+    function updateStatus(btn, status) {
+      const container = btn.closest('.request-item');
+      container.querySelector('.status').textContent = `Status: ${status}`;
     }
   </script>
 
