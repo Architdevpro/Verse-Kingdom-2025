@@ -61,6 +61,7 @@
       color: white;
       margin-top: 40px;
     }
+
     .service-category {
       margin-bottom: 20px;
       background-color: #f9f9f9;
@@ -68,16 +69,7 @@
       border-radius: 8px;
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     }
-    .service-category h3 {
-      font-size: 1.2em;
-      color: #2c3e50;
-    }
-    .service-category p {
-      font-size: 1em;
-      color: #555;
-    }
 
-    /* Announcements section */
     #announcements .announcement-item {
       background-color: #f9f9f9;
       padding: 15px;
@@ -86,14 +78,46 @@
       margin-bottom: 10px;
       cursor: pointer;
     }
-    #announcements .announcement-item h4 {
-      margin: 0;
-      color: #2c3e50;
-    }
+
     #announcements .announcement-content {
       margin-top: 10px;
       color: #555;
       display: none;
+    }
+
+    /* Chat Login Modal */
+    #login-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+    }
+    #login-box {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    #login-box input {
+      padding: 10px;
+      border-radius: 5px;
+      width: 80%;
+      margin-bottom: 15px;
+    }
+    #login-box button {
+      padding: 10px 20px;
+      background-color: #2c3e50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -176,10 +200,8 @@
     <section id="forum">
       <h2>Live Chat Room</h2>
       <div id="chat-box" style="max-height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; background-color: #fff; border-radius: 8px; margin-bottom: 10px;"></div>
-      <input type="text" id="username" placeholder="Your Name" style="width: 30%; padding: 8px; border-radius: 5px; margin-bottom: 10px;" />
-      <br>
-      <input type="text" id="chat-input" placeholder="Type a message..." style="width: 70%; padding: 10px; border-radius: 5px;" />
-      <button onclick="sendMessage()" style="padding: 10px 15px; border: none; background-color: #2c3e50; color: white; border-radius: 5px; margin-left: 10px;">Send</button>
+      <input type="text" id="chat-input" placeholder="Type a message..." style="width: 70%; padding: 10px; border-radius: 5px;" disabled />
+      <button onclick="sendMessage()" id="send-btn" style="padding: 10px 15px; border: none; background-color: #2c3e50; color: white; border-radius: 5px;" disabled>Send</button>
     </section>
   </main>
 
@@ -187,31 +209,43 @@
     <p>&copy; 2025 Study Point Group. All rights reserved.</p>
   </footer>
 
+  <!-- Login Popup -->
+  <div id="login-modal">
+    <div id="login-box">
+      <h3>Enter your name to join the chat</h3>
+      <input type="text" id="login-name" placeholder="Your Name..." />
+      <br>
+      <button onclick="loginUser()">Enter Chat</button>
+    </div>
+  </div>
+
   <script>
-    // Toggle announcements
+    let username = "";
+
     function toggleAnnouncement(element) {
       const content = element.querySelector('.announcement-content');
       content.style.display = content.style.display === 'none' ? 'block' : 'none';
     }
 
-    // Forum chat
-    function sendMessage() {
-      const username = document.getElementById('username').value.trim();
-      const chatInput = document.getElementById('chat-input');
-      const text = chatInput.value.trim();
-
-      if (!username || !text) return;
-
-      appendMessage(username, text);
-      chatInput.value = '';
+    function loginUser() {
+      const name = document.getElementById('login-name').value.trim();
+      if (!name) return;
+      username = name;
+      document.getElementById('login-modal').style.display = 'none';
+      document.getElementById('chat-input').disabled = false;
+      document.getElementById('send-btn').disabled = false;
     }
 
-    function appendMessage(username, text) {
+    function sendMessage() {
+      const input = document.getElementById('chat-input');
+      const text = input.value.trim();
+      if (!text) return;
       const chatBox = document.getElementById('chat-box');
-      const message = document.createElement('div');
-      message.innerHTML = `<strong>${username}:</strong> ${text}`;
-      chatBox.appendChild(message);
+      const msg = document.createElement('div');
+      msg.innerHTML = `<strong>${username}:</strong> ${text}`;
+      chatBox.appendChild(msg);
       chatBox.scrollTop = chatBox.scrollHeight;
+      input.value = '';
     }
   </script>
 
