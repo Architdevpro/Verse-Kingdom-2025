@@ -61,7 +61,6 @@
       color: white;
       margin-top: 40px;
     }
-
     .service-category {
       margin-bottom: 20px;
       background-color: #f9f9f9;
@@ -69,7 +68,6 @@
       border-radius: 8px;
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     }
-
     #announcements .announcement-item {
       background-color: #f9f9f9;
       padding: 15px;
@@ -78,14 +76,13 @@
       margin-bottom: 10px;
       cursor: pointer;
     }
-
-    #announcements .announcement-content {
-      margin-top: 10px;
-      color: #555;
+    .announcement-content.hidden {
       display: none;
     }
-
-    /* Chat Login Modal */
+    .announcement-content {
+      margin-top: 10px;
+      color: #555;
+    }
     #login-modal {
       position: fixed;
       top: 0;
@@ -179,7 +176,7 @@
       <h2>Latest Announcements</h2>
       <div class="announcement-item" onclick="toggleAnnouncement(this)">
         <h4>Homework Reminder</h4>
-        <div class="announcement-content">
+        <div class="announcement-content hidden">
           <ul>
             <li>Complete Mathematics Exercise 2.3</li>
             <li>Complete Hindi Question and Answers of Chapter 7</li>
@@ -191,7 +188,7 @@
       </div>
       <div class="announcement-item" onclick="toggleAnnouncement(this)">
         <h4>Server Notice</h4>
-        <div class="announcement-content">
+        <div class="announcement-content hidden">
           <p>Temporary server outage – site may load slowly.</p>
         </div>
       </div>
@@ -209,7 +206,6 @@
     <p>&copy; 2025 Study Point Group. All rights reserved.</p>
   </footer>
 
-  <!-- Login Popup -->
   <div id="login-modal">
     <div id="login-box">
       <h3>Enter your name to join the chat</h3>
@@ -222,30 +218,51 @@
   <script>
     let username = "";
 
+    window.onload = () => {
+      const savedName = localStorage.getItem('spg_username');
+      if (savedName) {
+        username = savedName;
+        document.getElementById('login-modal').style.display = 'none';
+        document.getElementById('chat-input').disabled = false;
+        document.getElementById('send-btn').disabled = false;
+        document.getElementById('chat-input').focus();
+        addMessage("System", `Welcome back, ${username}!`);
+      }
+    };
+
     function toggleAnnouncement(element) {
       const content = element.querySelector('.announcement-content');
-      content.style.display = content.style.display === 'none' ? 'block' : 'none';
+      content.classList.toggle('hidden');
     }
 
     function loginUser() {
       const name = document.getElementById('login-name').value.trim();
       if (!name) return;
       username = name;
+      localStorage.setItem('spg_username', username);
       document.getElementById('login-modal').style.display = 'none';
       document.getElementById('chat-input').disabled = false;
       document.getElementById('send-btn').disabled = false;
+      document.getElementById('chat-input').focus();
+      addMessage("System", `Welcome, ${username}!`);
     }
 
     function sendMessage() {
       const input = document.getElementById('chat-input');
       const text = input.value.trim();
       if (!text) return;
+      const safeText = text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      addMessage(username, safeText);
+      input.value = '';
+    }
+
+    function addMessage(sender, message) {
       const chatBox = document.getElementById('chat-box');
       const msg = document.createElement('div');
-      msg.innerHTML = `<strong>${username}:</strong> ${text}`;
+      const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      msg.innerHTML = `<strong>${sender}:</strong> ${message} <span style="float:right; color:#999; font-size: 0.8em;">${time}</span>`;
       chatBox.appendChild(msg);
-      chatBox.scrollTop = chatBox.scrollHeight;
-      input.value = '';
+      chatBox.scroll({ top: chatBox.scrollHeight, behavior: 'smooth' });
     }
   </script>
 
