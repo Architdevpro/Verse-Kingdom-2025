@@ -256,71 +256,91 @@
     <p>&copy; 2025 Study Point Group. All rights reserved.</p>
   </footer>
   <div id="login-modal">
-    <div id="login-box">
-      <h3>Enter your name to join the chat</h3>
-      <input type="text" id="login-name" placeholder="Your Name..." />
-      <br>
-      <button onclick="loginUser()">Enter Chat</button>
-    </div>
+  <div id="login-box">
+    <h3>Login to View the App and Chat</h3>
+    <p>Enter your first 4 letters of your name, account number, and current year. Example: AKAS012025</p>
+    <input type="text" id="full-name" placeholder="Full Name (e.g. Akash Kumar)" /><br><br>
+    <input type="text" id="account-no" placeholder="Account Number (e.g. 01)" /><br><br>
+    <input type="text" id="year" placeholder="Year (e.g. 2025)" /><br><br>
+    <button onclick="loginUser()">Login</button>
+  </div>
   </div>
 
-  <script>
-    let username = "";
+   <script>
+  let fullName = "";
+  const allowedIDs = {
+    "ARCH012025": "Archit",
+    "VAIB022025": "Vaibhav",
+    "ANAN032025": "Anant",
+    "TUSH042025": "Tushar",
+    "KASK052025": "Kask",
+    "KART062025": "Kartik",
+    "RISH072025": "Rishav"
+  };
 
-    function toggleAnnouncement(element) {
-      const content = element.querySelector('.announcement-content');
-      content.style.display = content.style.display === 'none' ? 'block' : 'none';
+  function loginUser() {
+    const name = document.getElementById('full-name').value.trim();
+    const number = document.getElementById('account-no').value.trim().padStart(2, '0');
+    const year = document.getElementById('year').value.trim();
+
+    if (!name || !number || !year) return alert("All fields are required!");
+
+    const id = (name.substring(0, 4).toUpperCase() + number + year);
+    if (!allowedIDs[id]) {
+      return alert("Invalid ID. Please check your details.");
     }
 
-    function loginUser() {
-      const name = document.getElementById('login-name').value.trim();
-      if (!name) return;
-      username = name;
-      document.getElementById('login-modal').style.display = 'none';
-      document.getElementById('chat-input').disabled = false;
-      document.getElementById('send-btn').disabled = false;
-    }
+    fullName = allowedIDs[id];
+    document.getElementById('login-modal').style.display = 'none';
+    document.getElementById('chat-input').disabled = false;
+    document.getElementById('send-btn').disabled = false;
 
-    function sendMessage() {
-      const input = document.getElementById('chat-input');
-      const text = input.value.trim();
-      if (!text) return;
+    const chatBox = document.getElementById('chat-box');
+    const welcome = document.createElement('div');
+    welcome.innerHTML = `<em>Welcome, ${fullName}!</em>`;
+    chatBox.appendChild(welcome);
+  }
 
-      const chatBox = document.getElementById('chat-box');
-      const msg = document.createElement('div');
-      msg.innerHTML = `<strong>${username}:</strong> ${text}`;
-      chatBox.appendChild(msg);
-      chatBox.scrollTop = chatBox.scrollHeight;
+  function sendMessage() {
+    const input = document.getElementById('chat-input');
+    const text = input.value.trim();
+    if (!text) return;
 
-      fetch('http://localhost:3000/messages', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: username, message: text })
-      });
+    const chatBox = document.getElementById('chat-box');
+    const msg = document.createElement('div');
+    msg.innerHTML = `<strong>${fullName}:</strong> ${text}`;
+    chatBox.appendChild(msg);
+    chatBox.scrollTop = chatBox.scrollHeight;
 
-      input.value = '';
-    }
-
-    window.onload = async () => {
-      try {
-        const res = await fetch('http://localhost:3000/messages');
-        const data = await res.json();
-        const chatBox = document.getElementById('chat-box');
-        data.forEach(({ name, message }) => {
-          const msg = document.createElement('div');
-          msg.innerHTML = `<strong>${name}:</strong> ${message}`;
-          chatBox.appendChild(msg);
-        });
-      } catch (err) {
-        console.warn("Could not connect to server.");
-      }
-    };
-
-    const menuToggle = document.getElementById('menuToggle');
-    const sideNav = document.getElementById('sideNav');
-    menuToggle.addEventListener('click', () => {
-      sideNav.classList.toggle('active');
+    fetch('http://localhost:3000/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: fullName, message: text })
     });
-  </script>
+
+    input.value = '';
+  }
+
+  window.onload = async () => {
+    try {
+      const res = await fetch('http://localhost:3000/messages');
+      const data = await res.json();
+      const chatBox = document.getElementById('chat-box');
+      data.forEach(({ name, message }) => {
+        const msg = document.createElement('div');
+        msg.innerHTML = `<strong>${name}:</strong> ${message}`;
+        chatBox.appendChild(msg);
+      });
+    } catch (err) {
+      console.warn("Could not connect to server.");
+    }
+  };
+
+  const menuToggle = document.getElementById('menuToggle');
+  const sideNav = document.getElementById('sideNav');
+  menuToggle.addEventListener('click', () => {
+    sideNav.classList.toggle('active');
+  });
+   </script>
 </body>
 </html>
