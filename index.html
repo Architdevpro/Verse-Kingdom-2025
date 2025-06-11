@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -11,146 +12,136 @@
       margin: 0;
       padding: 0;
       scroll-behavior: smooth;
-    }header {
-  background-color: #1a1a1a;
-  padding: 30px 0;
-  text-align: center;
-  border-bottom: 2px solid #ff0000;
-}
-
-h1 {
-  color: #ff0000;
-  font-size: 3em;
-  margin: 0;
-}
-
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  padding: 15px;
-  background-color: #111;
-  border-bottom: 1px solid #222;
-}
-
-nav a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-nav a:hover {
-  color: #ff0000;
-}
-
-section {
-  padding: 50px 20px;
-  max-width: 800px;
-  margin: auto;
-}
-
-.subscribe-btn {
-  background-color: #ff0000;
-  color: #fff;
-  padding: 12px 25px;
-  border: none;
-  border-radius: 5px;
-  font-size: 1.2em;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.subscribe-btn:hover {
-  background-color: #cc0000;
-}
-
-footer {
-  background-color: #121212;
-  text-align: center;
-  padding: 20px;
-  font-size: 0.9em;
-  color: #888;
-}
-
-.chat-container {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 300px;
-  max-height: 400px;
-  background-color: #1c1c1c;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-  display: flex;
-  flex-direction: column;
-}
-
-.chat-header {
-  background-color: #ff0000;
-  padding: 10px;
-  font-weight: bold;
-  text-align: center;
-}
-
-.chat-messages {
-  flex: 1;
-  padding: 10px;
-  overflow-y: auto;
-  font-size: 0.9em;
-}
-
-.chat-input {
-  display: flex;
-  border-top: 1px solid #333;
-}
-
-.chat-input input {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  outline: none;
-  background-color: #2c2c2c;
-  color: white;
-}
-
-.chat-input button {
-  background-color: #ff0000;
-  border: none;
-  padding: 10px 15px;
-  color: white;
-  cursor: pointer;
-}
-
-.chat-bubble {
-  margin: 5px 0;
-}
-
-.user {
-  text-align: right;
-  color: #4dd0e1;
-}
-
-.bot {
-  text-align: left;
-  color: #90ee90;
-}
-
+    }
+    header {
+      background-color: #1a1a1a;
+      padding: 30px 0;
+      text-align: center;
+      border-bottom: 2px solid #ff0000;
+    }
+    h1 {
+      color: #ff0000;
+      font-size: 3em;
+      margin: 0;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px;
+      background-color: #111;
+      border-bottom: 1px solid #222;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #ff0000;
+    }
+    section {
+      padding: 50px 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    .subscribe-btn {
+      background-color: #ff0000;
+      color: #fff;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.2em;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .subscribe-btn:hover {
+      background-color: #cc0000;
+    }
+    footer {
+      background-color: #121212;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #888;
+    }
+    .chat-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      max-height: 400px;
+      background-color: #1c1c1c;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+    }
+    .chat-header {
+      background-color: #ff0000;
+      padding: 10px;
+      font-weight: bold;
+      text-align: center;
+    }
+    .chat-messages {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      font-size: 0.9em;
+    }
+    .chat-input {
+      display: flex;
+      border-top: 1px solid #333;
+    }
+    .chat-input input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      outline: none;
+      background-color: #2c2c2c;
+      color: white;
+    }
+    .chat-input button {
+      background-color: #ff0000;
+      border: none;
+      padding: 10px 15px;
+      color: white;
+      cursor: pointer;
+    }
+    .chat-bubble {
+      margin: 5px 0;
+    }
+    .user {
+      text-align: right;
+      color: #4dd0e1;
+    }
+    .bot {
+      text-align: left;
+      color: #90ee90;
+    }
   </style>
 </head>
-<body>  <header>
+<body>
+  <header>
     <h1>🔥 QuadCore 🔥</h1>
     <p>Your ultimate stop for memes, edits, news, and fun!</p>
     <a class="subscribe-btn" href="https://youtube.com/@neatheraxe-pvt-co-ltd" target="_blank">Subscribe on YouTube</a>
-  </header>  <nav>
+  </header>
+
+  <nav>
     <a href="#about">1. About</a>
     <a href="#uploads">2. Uploads</a>
     <a href="#schedule">3. Schedule</a>
     <a href="#connect">4. Connect</a>
-  </nav>  <section id="about">
+  </nav>
+
+  <section id="about">
     <h2>1. About the Channel</h2>
     <p>QuadCore is a growing creative hub for people who love digital content. From spicy memes to royal and anime edits, football hype, and global news, we deliver it all in style.</p>
-  </section>  <section id="uploads">
+  </section>
+
+  <section id="uploads">
     <h2>2. What We Upload</h2>
     <p>Our channel features:</p>
     <ul>
@@ -160,17 +151,31 @@ footer {
       <li>🌍 Global trending news in short format</li>
       <li>🎌 Anime edits & emotional AMVs</li>
     </ul>
-  </section>  <section id="schedule">
+    <h3>📺 Featured Videos:</h3>
+    <ul>
+      <li><a href="https://www.youtube.com/watch?v=oWsr_GUdfG0" target="_blank">🌍 AFGAN WOMEN: Forgotten Voices, Silent Suffering</a></li>
+      <li><a href="https://www.youtube.com/watch?v=oWsr_GUdfG0" target="_blank">📰 Nepal: Monarch Returns or just a money power play?</a></li>
+    </ul>
+  </section>
+
+  <section id="schedule">
     <h2>3. Our Schedule</h2>
     <p>We upload content twice a day — sharp at <strong>12 AM</strong> and <strong>12 PM</strong> (IST).</p>
     <p>Make sure to subscribe and hit the 🔔 bell icon so you don’t miss our drops!</p>
-  </section>  <section id="connect">
+  </section>
+
+  <section id="connect">
     <h2>4. Connect with Us</h2>
-    <p>Join our Discord server for community fun, suggestions, and early content teasers.</p>
+    <p>Join our Discord server for community fun, suggestions, and early content teasers:</p>
+    <p>👉 <a href="https://discord.gg/jm58H3rRHC" target="_blank">Join QuadCore Family on Discord</a></p>
     <p>🎮 <em>Coming soon: QuadCore Game nights + Community contests!</em></p>
-  </section>  <footer>
+  </section>
+
+  <footer>
     &copy; 2025 QuadCore Studios™. All rights reserved.
-  </footer>  <div class="chat-container" id="chatbot">
+  </footer>
+
+  <div class="chat-container" id="chatbot">
     <div class="chat-header">💬 QuadCore Support</div>
     <div class="chat-messages" id="messages">
       <div class="chat-bubble bot">Hi! I'm QuadCore Support. Ask me anything about our channel.</div>
@@ -179,7 +184,9 @@ footer {
       <input type="text" id="userInput" placeholder="Type your question..." />
       <button onclick="handleMessage()">Send</button>
     </div>
-  </div>  <script>
+  </div>
+
+  <script>
     function handleMessage() {
       const input = document.getElementById("userInput");
       const msg = input.value.trim();
@@ -215,5 +222,6 @@ footer {
       input.value = "";
       messages.scrollTop = messages.scrollHeight;
     }
-  </script></body>
+  </script>
+</body>
 </html>
