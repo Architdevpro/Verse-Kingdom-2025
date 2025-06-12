@@ -187,45 +187,55 @@
       <button onclick="handleMessage()">Send</button>
     </div>
   </div>
- <script>
-  async function handleMessage() {
-    const input = document.getElementById("userInput");
-    const msg = input.value.trim();
-    if (msg === "") return;
 
-    const messages = document.getElementById("messages");
+  <script>
+    async function handleMessage() {
+      const input = document.getElementById("userInput");
+      const msg = input.value.trim();
+      if (msg === "") return;
 
-    // Show user message
-    const userMsg = document.createElement("div");
-    userMsg.className = "chat-bubble user";
-    userMsg.textContent = msg;
-    messages.appendChild(userMsg);
+      const messages = document.getElementById("messages");
 
-    // Send message to backend
-    try {
-      const response = await fetch("https://quadcore-backend.onrender.com/api/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ message: msg })
-      });
+      // Show user message
+      const userMsg = document.createElement("div");
+      userMsg.className = "chat-bubble user";
+      userMsg.textContent = msg;
+      messages.appendChild(userMsg);
 
-      const data = await response.json();
+      // Send message to backend
+      try {
+        const response = await fetch("https://quadcore-backend.onrender.com/api/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ message: msg })
+        });
 
-      const botMsg = document.createElement("div");
-      botMsg.className = "chat-bubble bot";
-      botMsg.textContent = data.reply || "Hmm, I didn't get that 😅";
-      messages.appendChild(botMsg);
-    } catch (error) {
-      const botMsg = document.createElement("div");
-      botMsg.className = "chat-bubble bot";
-      botMsg.textContent = "⚠️ Server error. Try again later!";
-      messages.appendChild(botMsg);
+        const data = await response.json();
+
+        const botMsg = document.createElement("div");
+        botMsg.className = "chat-bubble bot";
+        botMsg.textContent = data.reply || "Hmm, I didn't get that 😅";
+        messages.appendChild(botMsg);
+        messages.scrollTop = messages.scrollHeight;
+      } catch (error) {
+        const botMsg = document.createElement("div");
+        botMsg.className = "chat-bubble bot";
+        botMsg.textContent = "⚠️ Server error. Try again later!";
+        messages.appendChild(botMsg);
+        messages.scrollTop = messages.scrollHeight;
+      }
+
+      input.value = "";
     }
 
-    input.value = "";
-    messages.scrollTop = messages.scrollHeight;
-  }
+    // Enter key support
+    document.getElementById("userInput").addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        handleMessage();
+      }
+    });
+  </script>
 </body>
 </html>
