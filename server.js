@@ -26,18 +26,16 @@ app.post('/api/chat', async (req, res) => {
 
   try {
     const completion = await openai.chat.completions.create({
-      model: 'gpt-3.5-turbo', // Or another model
+      model: 'gpt-3.5-turbo',
       messages: [{ role: 'user', content: message }]
     });
+
+    // 👉 Add this to log the OpenAI response
+    console.log("OpenAI response:", completion);
 
     res.json({ reply: completion.choices[0].message.content });
   } catch (error) {
     console.error('OpenAI error:', error);
     res.status(500).json({ error: 'Failed to generate response' });
   }
-});
-
-// Start the server
-app.listen(PORT, () => {
-  console.log(`✅ Server is running on port ${PORT}`);
 });
