@@ -123,14 +123,15 @@
   </style>
 </head>
 <body>
- <header>
-  <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px;">
-    <img src="quadcore-logo.png" alt="QuadCore Logo" style="height: 50px;" />
-    <h1 style="font-size: 2em; margin: 0; color: #ff0000;">🔥 QuadCore 🔥</h1>
-  </div>
-  <p>Your ultimate stop for memes, edits, news, and fun!</p>
-  <a class="subscribe-btn" href="https://youtube.com/@neatheraxe-pvt-co-ltd" target="_blank">Subscribe on YouTube</a>
+  <header>
+    <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px;">
+      <img src="quadcore-logo.png" alt="QuadCore Logo" style="height: 50px;" />
+      <h1 style="font-size: 2em; margin: 0; color: #ff0000;">🔥 QuadCore 🔥</h1>
+    </div>
+    <p>Your ultimate stop for memes, edits, news, and fun!</p>
+    <a class="subscribe-btn" href="https://youtube.com/@neatheraxe-pvt-co-ltd" target="_blank">Subscribe on YouTube</a>
   </header>
+
   <nav>
     <a href="#about">1. About</a>
     <a href="#uploads">2. Uploads</a>
@@ -177,6 +178,7 @@
     &copy; 2025 QuadCore Studios™. All rights reserved.
   </footer>
 
+  <!-- Chatbot -->
   <div class="chat-container" id="chatbot">
     <div class="chat-header">💬 QuadCore Support</div>
     <div class="chat-messages" id="messages">
@@ -188,6 +190,7 @@
     </div>
   </div>
 
+  <!-- Script -->
   <script>
     async function handleMessage() {
       const input = document.getElementById("userInput");
@@ -196,13 +199,16 @@
 
       const messages = document.getElementById("messages");
 
-      // Show user message
       const userMsg = document.createElement("div");
       userMsg.className = "chat-bubble user";
       userMsg.textContent = msg;
       messages.appendChild(userMsg);
 
-      // Send message to backend
+      const botMsg = document.createElement("div");
+      botMsg.className = "chat-bubble bot";
+      botMsg.textContent = "⌛ Loading...";
+      messages.appendChild(botMsg);
+
       try {
         const response = await fetch("https://quadcore-backend.onrender.com/api/chat", {
           method: "POST",
@@ -213,28 +219,19 @@
         });
 
         const data = await response.json();
-
-        const botMsg = document.createElement("div");
-        botMsg.className = "chat-bubble bot";
-        botMsg.textContent = data.reply || "Hmm, I didn't get that 😅";
-        messages.appendChild(botMsg);
-        messages.scrollTop = messages.scrollHeight;
+        botMsg.textContent = data.reply || "🤖 Hmm, I didn’t understand that.";
       } catch (error) {
-        const botMsg = document.createElement("div");
-        botMsg.className = "chat-bubble bot";
-        botMsg.textContent = "⚠️ Server error. Try again later!";
-        messages.appendChild(botMsg);
-        messages.scrollTop = messages.scrollHeight;
+        botMsg.textContent = "⚠️ Server not responding. Try again later!";
       }
 
       input.value = "";
+      messages.scrollTop = messages.scrollHeight;
     }
 
-    // Enter key support
-    document.getElementById("userInput").addEventListener("keydown", function (event) {
-      if (event.key === "Enter") {
-        handleMessage();
-      }
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("userInput").addEventListener("keypress", function(e) {
+        if (e.key === "Enter") handleMessage();
+      });
     });
   </script>
 </body>
