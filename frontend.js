@@ -5,34 +5,41 @@ async function handleMessage() {
 
   const messages = document.getElementById("messages");
 
-  // Show user message
+  // Add user message to the chat
   const userMsg = document.createElement("div");
   userMsg.className = "chat-bubble user";
   userMsg.textContent = msg;
   messages.appendChild(userMsg);
 
-  // Send message to backend
+  // Clear input
+  input.value = "";
+
+  // Scroll to bottom
+  messages.scrollTop = messages.scrollHeight;
+
   try {
-    const response = await fetch("https://quadcore-backend.onrender.com", {
+    const response = await fetch("https://your-backend-name.onrender.com/api/chat", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ message: msg })
+      body: JSON.stringify({ message: msg }),
     });
 
     const data = await response.json();
+
     const botMsg = document.createElement("div");
     botMsg.className = "chat-bubble bot";
-    botMsg.textContent = data.reply;
+    botMsg.textContent = data.reply || "Something went wrong!";
     messages.appendChild(botMsg);
+
+    messages.scrollTop = messages.scrollHeight;
   } catch (error) {
+    console.error("Error:", error);
+
     const errorMsg = document.createElement("div");
     errorMsg.className = "chat-bubble bot";
-    errorMsg.textContent = "Error talking to QuadCore Support bot.";
+    errorMsg.textContent = "⚠️ Server error. Please try again later.";
     messages.appendChild(errorMsg);
   }
-
-  input.value = "";
-  messages.scrollTop = messages.scrollHeight;
 }
