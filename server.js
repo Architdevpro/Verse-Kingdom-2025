@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 });
 
 // Chat route
-app.post('/chat', async (req, res) => {
+app.post('/api/chat', async (req, res) => {
   const { message } = req.body;
 
   try {
