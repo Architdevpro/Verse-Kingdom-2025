@@ -217,7 +217,14 @@
 });
 
         const data = await response.json();
-        botMsg.textContent = data.reply || "🤖 Hmm, I didn’t understand that.";
+console.log("Bot replied with:", data); // 👈 this
+        if (data && data.reply) {
+  botMsg.textContent = data.reply;
+} else if (data && data.error) {
+  botMsg.textContent = "⚠️ Error: " + data.error;
+} else {
+  botMsg.textContent = "🤖 Hmm, I didn’t understand that.";
+        }
       } catch (error) {
         botMsg.textContent = "⚠️ Server not responding. Try again later!";
       }
