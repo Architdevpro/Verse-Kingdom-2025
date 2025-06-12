@@ -18,7 +18,7 @@ async function handleMessage() {
   messages.scrollTop = messages.scrollHeight;
 
   try {
-    const response = await fetch("https://your-backend-name.onrender.com/api/chat", {
+    const response = await fetch("https://quadcore-backend.onrender.com/api/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
