@@ -188,42 +188,6 @@
     </div>
   </div>
 
-  <script>
-    function handleMessage() {
-      const input = document.getElementById("userInput");
-      const msg = input.value.trim();
-      if (msg === "") return;
-
-      const messages = document.getElementById("messages");
-
-      const userMsg = document.createElement("div");
-      userMsg.className = "chat-bubble user";
-      userMsg.textContent = msg;
-      messages.appendChild(userMsg);
-
-      let reply = "Sorry, I didn't understand that. 😅";
-      const lower = msg.toLowerCase();
-
-      if (lower.includes("what is quadcore")) {
-        reply = "QuadCore is a YouTube channel for memes, anime, football edits, and global news!";
-      } else if (lower.includes("when do you upload")) {
-        reply = "We upload daily at 12 AM and 12 PM IST!";
-      } else if (lower.includes("what type of content") || lower.includes("what do you upload")) {
-        reply = "We post memes, royal edits, anime AMVs, football clips, and trending news!";
-      } else if (lower.includes("how to subscribe")) {
-        reply = "Click the red 'Subscribe on YouTube' button at the top of this page!";
-      } else if (lower.includes("hi") || lower.includes("hello")) {
-        reply = "Hello! Ask me anything about QuadCore 🔥";
-      }
-
-      const botMsg = document.createElement("div");
-      botMsg.className = "chat-bubble bot";
-      botMsg.textContent = reply;
-      messages.appendChild(botMsg);
-
-      input.value = "";
-      messages.scrollTop = messages.scrollHeight;
-    }
-  </script>
+  <script src="frontend.js"></script>
 </body>
 </html>
