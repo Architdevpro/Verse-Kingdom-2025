@@ -10,13 +10,14 @@ app.use(express.json());
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
+
 const openai = new OpenAIApi(configuration);
 
 app.post("/api/chat", async (req, res) => {
   const userMessage = req.body.message;
 
   try {
-    const response = await openai.createChatCompletion({
+    const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [
         {
@@ -28,13 +29,14 @@ app.post("/api/chat", async (req, res) => {
       ],
     });
 
-    const reply = response.data.choices[0].message.content;
+    const reply = response.choices[0].message.content;
     res.json({ reply });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ reply: "Server error. Try again later!" });
+  } catch (error) {
+    console.error("OpenAI API error:", error.message);
+    res.status(500).json({ error: "Something went wrong." });
   }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(3000, () => {
+  console.log("Server is running on port 3000");
+});
