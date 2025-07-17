@@ -51,7 +51,7 @@
       padding: 15px;
       margin: 10px 0;
     }
-    form input, form textarea, form button, form select {
+    form input, form textarea, form button {
       width: 100%;
       padding: 10px;
       margin-top: 8px;
@@ -69,14 +69,37 @@
     form button:hover {
       background-color: #00ddaa;
     }
+
+    /* Voting Overlay Styles */
+    .voting-wrapper {
+      position: relative;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+    .voting-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(30, 30, 47, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #00ffcc;
+      text-align: center;
+      border-radius: 10px;
+      z-index: 10;
+    }
   </style>
 </head>
 <body>
   <header>
-    <img src="versekingdom.jpg" alt="Verse Kingdom Logo" />
+    <img src="versekingdom.jpg" alt="Verse Kingdom Logo">
     <h1>🏰 VersaKingdom - Minecraft Eternal Server 🛡️</h1>
   </header>
-
   <main>
     <section>
       <p>Welcome to <span class="highlight">VersaKingdom</span> – a realm of <strong>magic, machines, and mayhem</strong>! This is the official page for our Minecraft Eternal SMP server.</p>
@@ -134,7 +157,7 @@
       <ul>
         <li>10 Iron = 1 Diamond</li>
         <li>1 Diamond = 40 Coal</li>
-        <li>10 Iron = 5 Emerald</li>
+        <li>10 Iron = 2 Emerald</li>
       </ul>
     </section>
 
@@ -157,38 +180,32 @@
       </form>
     </section>
 
-    <!-- 🧠 Voting Section (Hidden by Default) -->
-    <section id="voting-section" style="display: none;">
+    <!-- 🗳️ Voting Section -->
+    <section id="voting-section">
       <h2>🗳️ Vote for Your King</h2>
-      <form action="https://formspree.io/f/YOUR_VOTING_FORM_ID" method="POST">
-        <label for="voter-name">Your Real Name:</label>
-        <input type="text" id="voter-name" name="voter-name" required>
 
-        <label for="minecraft-name">Minecraft Username:</label>
-        <input type="text" id="minecraft-name" name="minecraft-name" required>
+      <div class="voting-wrapper">
+        <!-- Overlay -->
+        <div class="voting-overlay">
+          🕒 Voting opens on <strong>20th July</strong>
+        </div>
 
-        <label for="candidate">Choose Your Candidate:</label>
-        <select id="candidate" name="candidate" required>
-          <option value="">-- Select --</option>
-          <!-- Add real candidates here when ready -->
-          <option value="Candidate 1">Candidate 1 - Example Goal</option>
-          <option value="Candidate 2">Candidate 2 - Example Goal</option>
-        </select>
+        <!-- Form hidden under overlay -->
+        <form action="https://formspree.io/f/xqalaaby" method="POST">
+          <label for="voter">Your Minecraft Username:</label>
+          <input type="text" id="voter" name="voter" required>
 
-        <button type="submit">Cast Vote</button>
-      </form>
+          <label for="vote">Who do you vote for?</label>
+          <input type="text" id="vote" name="vote" required>
+
+          <button type="submit" disabled>Vote</button>
+        </form>
+      </div>
     </section>
 
     <section>
       <p><em>Let the adventure begin!</em></p>
     </section>
   </main>
-
-  <script>
-    // Call this manually in browser console to show voting section
-    function showVoting() {
-      document.getElementById("voting-section").style.display = "block";
-    }
-  </script>
 </body>
 </html>
