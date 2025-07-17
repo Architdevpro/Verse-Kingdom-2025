@@ -217,6 +217,30 @@
         <strong>🎯 Goal:</strong> No Candidate Available - Register yourself to claim the spot
     </div>
 </section>
+
+    <section>
+    <h2>📢 Report / Feedback / Help</h2>
+    <form action="https://formspree.io/f/xxxxx" method="POST">
+        <label for="type">What is this about?</label>
+        <select id="type" name="type" required>
+            <option value="report">Report an Issue</option>
+            <option value="feedback">Give Feedback</option>
+            <option value="help">Request Help</option>
+        </select>
+
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required>
+
+        <label for="message">Describe your concern:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <label for="contact">Your Discord or Email (optional):</label>
+        <input type="text" id="contact" name="contact">
+
+        <button type="submit">Submit</button>
+    </form>
+    </section>
+    
     <section>
       <p><em>Let the adventure begin!</em></p>
     </section>
