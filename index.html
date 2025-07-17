@@ -37,8 +37,7 @@
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
-        ul {
-            list-style-type: square;
+        ul, ol {
             padding-left: 20px;
         }
         .highlight {
@@ -50,6 +49,24 @@
             border-radius: 10px;
             padding: 15px;
             margin: 10px 0;
+        }
+        form input, form textarea, form button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border-radius: 5px;
+            border: none;
+            font-size: 1rem;
+        }
+        form button {
+            background-color: #00ffcc;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        form button:hover {
+            background-color: #00ddaa;
         }
     </style>
 </head>
@@ -119,26 +136,27 @@
     </section>
 
     <section>
+        <h2>🗳️ Election Registration</h2>
+        <form action="https://formspree.io/f/xvgqggzo" method="POST">
+            <label for="name">Your Real Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="username">Minecraft Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="reason">Why do you want to be King?</label>
+            <textarea id="reason" name="reason"></textarea>
+
+            <label for="contact">Discord or Email (optional):</label>
+            <input type="text" id="contact" name="contact">
+
+            <button type="submit">Register</button>
+        </form>
+    </section>
+
+    <section>
         <p><em>Let the adventure begin!</em></p>
     </section>
-        <section>
-    <h2>🗳️ Election Registration</h2>
-    <form action="https://formspree.io/f/yourFormID" method="POST">
-        <label for="name">Real Name:</label><br>
-        <input type="text" id="name" name="name" required><br><br>
-
-        <label for="username">Minecraft Username:</label><br>
-        <input type="text" id="username" name="username" required><br><br>
-
-        <label for="reason">Why do you want to be King? (optional)</label><br>
-        <textarea id="reason" name="reason"></textarea><br><br>
-
-        <label for="contact">Email or Discord (optional):</label><br>
-        <input type="text" id="contact" name="contact"><br><br>
-
-        <button type="submit">Register</button>
-    </form>
-        </section>
 </main>
 
 </body>
