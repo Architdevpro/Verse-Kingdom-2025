@@ -161,25 +161,42 @@
       </ul>
     </section>
 
-    <section>
-      <h2>🗳️ Election Registration</h2>
-      <form action="https://formspree.io/f/xvgqggzo" method="POST">
-        <label for="name">Your Real Name:</label>
-        <input type="text" id="name" name="name" required>
+    <section style="position: relative; opacity: 0.4; pointer-events: none;">
+  <h2>🗳️ Election Registration</h2>
+  <form action="https://formspree.io/f/xvgqggzo" method="POST">
+    <label for="name">Your Real Name:</label>
+    <input type="text" id="name" name="name" required>
 
-        <label for="username">Minecraft Username:</label>
-        <input type="text" id="username" name="username" required>
+    <label for="username">Minecraft Username:</label>
+    <input type="text" id="username" name="username" required>
 
-        <label for="reason">Why do you want to be King?</label>
-        <textarea id="reason" name="reason"></textarea>
+    <label for="reason">Why do you want to be King?</label>
+    <textarea id="reason" name="reason"></textarea>
 
-        <label for="contact">Discord or Email (optional):</label>
-        <input type="text" id="contact" name="contact">
+    <label for="contact">Discord or Email (optional):</label>
+    <input type="text" id="contact" name="contact">
 
-        <button type="submit">Register</button>
-      </form>
+    <button type="submit" disabled>Register</button>
+  </form>
+
+  <!-- Overlay Message -->
+  <div style="
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+  ">
+    REGISTRATION CLOSED 🔒
+  </div>
     </section>
-
     <!-- 🗳️ Voting Section -->
     <section id="voting-section">
       <h2>🗳️ Vote for Your King</h2>
