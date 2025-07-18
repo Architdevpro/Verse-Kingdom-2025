@@ -195,30 +195,38 @@
     z-index: 10;
   ">
     REGISTRATION CLOSED 🔒
+
+    </div>
+</section>
+<!-- 🗳️ Voting Section -->
+<section id="voting-section">
+  <h2>🗳️ Vote for Your King</h2>
+
+  <div class="voting-wrapper">
+    <!-- Overlay -->
+    <div class="voting-overlay">
+      🕒 Voting opens on <strong>20th July</strong>
+    </div>
+
+    <!-- Form hidden under overlay -->
+    <form action="https://formspree.io/f/xqalaaby" method="POST">
+      <label for="voter-id">Please Enter Your Voter ID:</label>
+      <input type="text" id="voter-id" name="voter-id" required>
+
+      <label for="voter">Your Minecraft Username:</label>
+      <input type="text" id="voter" name="voter" required>
+
+      <label for="vote">Who do you vote for?</label>
+      <select id="vote" name="vote" required>
+        <option value="">-- Select Candidate --</option>
+        <option value="KITOFHAND2">KITOFHAND2</option>
+        <option value="KARTIK GAMER510">KARTIK GAMER510</option>
+      </select>
+
+      <button type="submit" disabled>Vote</button>
+    </form>
   </div>
-    </section>
-    <!-- 🗳️ Voting Section -->
-    <section id="voting-section">
-      <h2>🗳️ Vote for Your King</h2>
-
-      <div class="voting-wrapper">
-        <!-- Overlay -->
-        <div class="voting-overlay">
-          🕒 Voting opens on <strong> 20th July</strong>
-        </div>
-
-        <!-- Form hidden under overlay -->
-        <form action="https://formspree.io/f/xqalaaby" method="POST">
-          <label for="voter">Your Minecraft Username:</label>
-          <input type="text" id="voter" name="voter" required>
-
-          <label for="vote">Who do you vote for?</label>
-          <input type="text" id="vote" name="vote" required>
-
-          <button type="submit" disabled>Vote</button>
-        </form>
-      </div>
-    </section>
+</section>
 
     <section>
   <h2>⏳ Countdown to Elections</h2>
