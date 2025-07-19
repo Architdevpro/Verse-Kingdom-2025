@@ -311,7 +311,7 @@ setInterval(function() {
 }, 1000);
     async function fetchServerStatus() {
   try {
-    const response = await fetch("https://api.mcsrvstat.us/bedrock/3/VerseKingdom.aternos.me");
+    const response = await fetch("https://api.mcsrvstat.us/bedrock/2/VerseKingdom.aternos.me:43748");
     const data = await response.json();
 
     const status = document.getElementById("status");
