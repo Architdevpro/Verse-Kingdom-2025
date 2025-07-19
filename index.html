@@ -303,15 +303,24 @@
       if (!menu.contains(e.target) && !toggle.contains(e.target)) {
         menu.style.display = "none";
       }
-    });const countdownDate = new Date("July 20, 2025 00:00:00").getTime();
+    });
+    const countdownDate = new Date("July 20, 2025 00:00:00").getTime();
 const countdown = document.getElementById("countdown");
-setInterval(function() {
+
+setInterval(() => {
   const now = new Date().getTime();
   const distance = countdownDate - now;
+
+  if (distance < 0) {
+    countdown.innerHTML = "🗳️ Voting is now open!";
+    return;
+  }
+
   const days = Math.floor(distance / (1000 * 60 * 60 * 24));
   const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  
   countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s remaining`;
 }, 1000);
     async function fetchServerStatus() {
@@ -339,10 +348,11 @@ fetchServerStatus();
 setInterval(fetchServerStatus, 10000); // update every 10 seconds
 
   </script>
-  <footer style="background-color: #2c2c3d; color: #888; padding: 20px; text-align: center; font-size: 0.9rem; margin-top: 50px;">
-  <p>Verse Kingdom © 2025</p>
-  <p>⏳ Live player count and countdown timers may experience slight delays.</p>
-  <p>🧱 This is a community fan project. Not affiliated with Mojang or Aternos.</p>
-  </footer>
+<!-- 🌍 Footer -->
+<footer style="margin-top: 2rem; padding: 1.5rem; background-color: #121212; color: #bbb; text-align: center; font-size: 0.9rem;">
+  <div>© 2025 Verse Kingdom. All rights reserved.</div>
+  <div>Live Server Status, Player Count & Timers may not always be accurate.</div>
+  <div>Made with ❤️ for the Minecraft Eternal Community.</div>
+</footer>
 </body>
 </html>
