@@ -127,6 +127,10 @@
   <header>
     <img src="versekingdom.jpg" alt="Verse Kingdom Logo">
     <h1>🏰 VersaKingdom - Minecraft Eternal Server 🛡️</h1>
+<div id="server-status" style="margin-top: 10px; font-size: 1.1rem;">
+  <span><strong>Status:</strong> <span id="status">Loading...</span></span><br>
+  <span><strong>Online Players:</strong> <span id="players">Loading...</span></span>
+</div>
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     <nav id="dropdown-menu">
       <a href="#server-info">🌍 Server Info</a>
@@ -305,6 +309,29 @@ setInterval(function() {
   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
   countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s remaining`;
 }, 1000);
+    async function fetchServerStatus() {
+  try {
+    const response = await fetch("https://api.mcsrvstat.us/2/VerseKingdom.aternos.me:43748");
+    const data = await response.json();
+
+    const status = document.getElementById("status");
+    const players = document.getElementById("players");
+
+    if (data.online) {
+      status.textContent = "🟢 Online";
+      players.textContent = `${data.players.online} / ${data.players.max}`;
+    } else {
+      status.textContent = "🔴 Offline";
+      players.textContent = "0";
+    }
+  } catch (err) {
+    document.getElementById("status").textContent = "❌ Error";
+    document.getElementById("players").textContent = "Unknown";
+  }
+}
+
+fetchServerStatus();
+setInterval(fetchServerStatus, 10000); // update every 10 seconds
 
   </script>
 </body>
