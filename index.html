@@ -292,12 +292,12 @@
 <section id="candidates">
   <h2>🎯 Candidates & Their Goals</h2>
   <div class="box">
-    <strong>👤 Name:</strong> KITOFHAND2<br>
-    <strong>🎯 Goal:</strong> Bring peace, build a public railway, and protect the weak and make strong reforms.
+    <strong>👤 Name:</strong> No Candidate Available<br>
+    <strong>🎯 Goal:</strong> Register yourself to claim the spot
   </div>
   <div class="box">
     <strong>👤 Name:</strong> KartikGamer510<br>
-    <strong>🎯 Goal:</strong> Being King brings fame and status. Me get exclusive gear, privileges, or access to special areas and commands.
+    <strong>🎯 Goal:</strong> Register yourself to claim the spot
   </div>
   <div class="box">
     <strong>👤 Name:</strong> No Candidate Available<br>
@@ -402,19 +402,34 @@ setInterval(fetchServerStatus, 10000); // update every 10 seconds
     }
   }
 
+  // 🎯 Schedule fireworks from 2:00 PM to 2:10 PM
   const now = new Date();
-  const triggerTime = new Date();
-  triggerTime.setHours(14, 0, 0, 0); // 2:00 PM
+  const start = new Date();
+  const end = new Date();
+  start.setHours(14, 0, 0, 0);   // 2:00 PM
+  end.setHours(14, 10, 0, 0);    // 2:10 PM
 
-  if (now >= triggerTime) {
-    launchFireworks();
-    dropPetals();
-  } else {
-    const delay = triggerTime - now;
-    setTimeout(() => {
+  function startAnimationLoop() {
+    const interval = setInterval(() => {
+      const currentTime = new Date();
+      if (currentTime >= end) {
+        clearInterval(interval);
+        return;
+      }
       launchFireworks();
       dropPetals();
-    }, delay);
+    }, 5000); // Every 5 seconds
+  }
+
+  if (now >= end) {
+    // Past 2:10 PM – do nothing
+  } else if (now >= start) {
+    // Between 2:00 and 2:10 – start immediately
+    startAnimationLoop();
+  } else {
+    // Before 2:00 PM – wait until 2:00 to start
+    const delay = start - now;
+    setTimeout(startAnimationLoop, delay);
   }
   </script>
 </body>
