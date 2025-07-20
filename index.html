@@ -229,8 +229,7 @@
 
 <section id="voting-section">
   <h2>🗳️ Vote for Your King</h2>
-  <div class="voting-wrapper">
-    <div class="voting-overlay">🕒 Voting opens on <strong>20th July</strong></div>
+  <div class="voting-wrapper" style="opacity: 1; pointer-events: auto;">
     <form action="https://formspree.io/f/xqalaaby" method="POST">
       <label for="voter-id">Please Enter Your Voter ID:</label>
       <input type="text" id="voter-id" name="voter-id" required>
@@ -242,14 +241,9 @@
         <option value="KITOFHAND2">KITOFHAND2</option>
         <option value="KARTIK GAMER510">KARTIK GAMER510</option>
       </select>
-      <button type="submit" disabled>Vote</button>
+      <button type="submit">Vote</button>
     </form>
   </div>
-</section>
-
-<section id="countdown">
-  <h2>⏳ Countdown to Elections</h2>
-  <p id="countdown">Loading countdown...</p>
 </section>
 
 <section id="candidates">
@@ -293,27 +287,6 @@
 
   </main>
   <script>
-    function toggleMenu() {
-      const menu = document.getElementById("dropdown-menu");
-      menu.style.display = menu.style.display === "block" ? "none" : "block";
-    }
-    document.addEventListener('click', function(e) {
-      const menu = document.getElementById("dropdown-menu");
-      const toggle = document.querySelector(".menu-toggle");
-      if (!menu.contains(e.target) && !toggle.contains(e.target)) {
-        menu.style.display = "none";
-      }
-    });const countdownDate = new Date("July 20, 2025 00:00:00").getTime();
-const countdown = document.getElementById("countdown");
-setInterval(function() {
-  const now = new Date().getTime();
-  const distance = countdownDate - now;
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-  countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s remaining`;
-}, 1000);
     async function fetchServerStatus() {
   try {
     const response = await fetch("https://api.mcsrvstat.us/bedrock/2/VerseKingdom.aternos.me:43748");
