@@ -227,6 +227,45 @@
     </form>
   </div>
 </section>
+    <section id="results">
+  <h2>📊 Official Voting Results</h2>
+  <div id="result-declaration" class="box"></div>
+</section>
+
+<script>
+  // Set vote counts here
+  const candidate1 = { name: "KITOFHAND2", votes: 0 };
+  const candidate2 = { name: "KARTIK GAMER510", votes: 0 };
+
+  const resultContainer = document.getElementById("result-declaration");
+
+  let resultHTML = "";
+
+  if (candidate1.votes > candidate2.votes) {
+    resultHTML = `
+      <div style="color: #4caf50; font-weight: bold; font-size: 1.2rem;">
+        🎉 ${candidate1.name} has been elected King!
+      </div>
+      <div>${candidate1.name}: ${candidate1.votes} votes<br>${candidate2.name}: ${candidate2.votes} votes</div>
+    `;
+  } else if (candidate2.votes > candidate1.votes) {
+    resultHTML = `
+      <div style="color: #4caf50; font-weight: bold; font-size: 1.2rem;">
+        🎉 ${candidate2.name} has been elected King!
+      </div>
+      <div>${candidate1.name}: ${candidate1.votes} votes<br>${candidate2.name}: ${candidate2.votes} votes</div>
+    `;
+  } else {
+    resultHTML = `
+      <div style="color: gold; font-weight: bold; font-size: 1.2rem;">
+        🤝 It's a tie! Re-vote may be needed.
+      </div>
+      <div>${candidate1.name}: ${candidate1.votes} votes<br>${candidate2.name}: ${candidate2.votes} votes</div>
+    `;
+  }
+
+  resultContainer.innerHTML = resultHTML;
+</script>
 
 <section id="candidates">
   <h2>🎯 Candidates & Their Goals</h2>
@@ -310,44 +349,6 @@ setInterval(fetchServerStatus, 10000); // update every 10 seconds
     }
   }
   </script>
-  <section id="results">
-  <h2>📊 Official Voting Results</h2>
-  <div id="result-declaration" class="box"></div>
-</section>
-
-<script>
-  // Set vote counts here
-  const candidate1 = { name: "KITOFHAND2", votes: 0 };
-  const candidate2 = { name: "KARTIK GAMER510", votes: 0 };
-
-  const resultContainer = document.getElementById("result-declaration");
-
-  let resultHTML = "";
-
-  if (candidate1.votes > candidate2.votes) {
-    resultHTML = `
-      <div style="color: #4caf50; font-weight: bold; font-size: 1.2rem;">
-        🎉 ${candidate1.name} has been elected King!
-      </div>
-      <div>${candidate1.name}: ${candidate1.votes} votes<br>${candidate2.name}: ${candidate2.votes} votes</div>
-    `;
-  } else if (candidate2.votes > candidate1.votes) {
-    resultHTML = `
-      <div style="color: #4caf50; font-weight: bold; font-size: 1.2rem;">
-        🎉 ${candidate2.name} has been elected King!
-      </div>
-      <div>${candidate1.name}: ${candidate1.votes} votes<br>${candidate2.name}: ${candidate2.votes} votes</div>
-    `;
-  } else {
-    resultHTML = `
-      <div style="color: gold; font-weight: bold; font-size: 1.2rem;">
-        🤝 It's a tie! Re-vote may be needed.
-      </div>
-      <div>${candidate1.name}: ${candidate1.votes} votes<br>${candidate2.name}: ${candidate2.votes} votes</div>
-    `;
-  }
-
-  resultContainer.innerHTML = resultHTML;
-</script>
+  
 </body>
 </html>
