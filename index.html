@@ -107,6 +107,28 @@
     footer p {
   margin: 5px 0;
     }
+  .firework, .petal {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes firework {
+    0% { transform: scale(0.2); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+  }
+
+  @keyframes fall {
+    0% {
+      transform: translateY(-10vh) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
   </style>
 </head>
 <body>
@@ -119,16 +141,16 @@
 </div>
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     <nav id="dropdown-menu">
-      <a href="#server-info">🌍 Server Info</a>
-      <a href="#rules">⚔️ Rules</a>
-      <a href="#election-rules">🗳️ Election Rules</a>
-      <a href="#powers">🇺🇳 King Powers</a>
-      <a href="#currency">🪙 Currency</a>
-      <a href="#registration">📝 Register</a>
-      <a href="#voting-section">🗳️ Vote</a>
-      <a href="#countdown">⏳ Countdown</a>
-      <a href="#candidates">🎯 Candidates</a>
-      <a href="#report">📢 Report</a>
+  <a href="#server-info">🌍 Server Info</a>
+  <a href="#rules">⚔️ Rules</a>
+  <a href="#election-rules">🗳️ Election Rules</a>
+  <a href="#powers">🇺🇳 King Powers</a>
+  <a href="#currency">🪙 Currency</a>
+  <a href="#registration">📝 Register</a>
+  <a href="#voting-section">🗳️ Vote</a>
+  <a href="#results">📊 Election Results</a>
+  <a href="#candidates">🎯 Candidates</a>
+  <a href="#report">📢 Report</a>
     </nav>
   </header>
   <main>
@@ -349,6 +371,51 @@ setInterval(fetchServerStatus, 10000); // update every 10 seconds
     }
   }
   </script>
-  
+  <script>
+  function launchFireworks() {
+    for (let i = 0; i < 10; i++) {
+      const firework = document.createElement('div');
+      firework.className = 'firework';
+      firework.style.width = '15px';
+      firework.style.height = '15px';
+      firework.style.borderRadius = '50%';
+      firework.style.background = `hsl(${Math.random() * 360}, 100%, 60%)`;
+      firework.style.left = `${Math.random() * 100}%`;
+      firework.style.top = `${Math.random() * 50 + 10}%`;
+      firework.style.animation = 'firework 1s ease-out';
+      document.body.appendChild(firework);
+      setTimeout(() => firework.remove(), 1000);
+    }
+  }
+
+  function dropPetals() {
+    for (let i = 0; i < 20; i++) {
+      const petal = document.createElement('div');
+      petal.className = 'petal';
+      petal.innerText = '🌸';
+      petal.style.left = `${Math.random() * 100}%`;
+      petal.style.top = `-5%`;
+      petal.style.fontSize = `${Math.random() * 10 + 15}px`;
+      petal.style.animation = `fall ${Math.random() * 3 + 3}s linear`;
+      document.body.appendChild(petal);
+      setTimeout(() => petal.remove(), 6000);
+    }
+  }
+
+  const now = new Date();
+  const triggerTime = new Date();
+  triggerTime.setHours(14, 0, 0, 0); // 2:00 PM
+
+  if (now >= triggerTime) {
+    launchFireworks();
+    dropPetals();
+  } else {
+    const delay = triggerTime - now;
+    setTimeout(() => {
+      launchFireworks();
+      dropPetals();
+    }, delay);
+  }
+  </script>
 </body>
 </html>
