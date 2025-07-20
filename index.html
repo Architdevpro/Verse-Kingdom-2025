@@ -233,7 +233,7 @@
 
 <section id="voting-section">
   <h2>🗳️ Vote for Your King</h2>
-  <div class="voting-wrapper" style="opacity: 1; pointer-events: auto;">
+  <div style="opacity: 0.4; pointer-events: none; position: relative;">
     <form action="https://formspree.io/f/xqalaaby" method="POST">
       <label for="voter-id">Please Enter Your Voter ID:</label>
       <input type="text" id="voter-id" name="voter-id" required>
@@ -245,8 +245,11 @@
         <option value="KITOFHAND2">KITOFHAND2</option>
         <option value="KARTIK GAMER510">KARTIK GAMER510</option>
       </select>
-      <button type="submit">Vote</button>
+      <button type="submit" disabled>Vote</button>
     </form>
+    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.8); color: white; font-size: 2em; display: flex; justify-content: center; align-items: center; z-index: 10;">
+      🔒 VOTING CLOSED
+    </div>
   </div>
 </section>
     <section id="results">
@@ -296,7 +299,7 @@
     <strong>🎯 Goal:</strong> Register yourself to claim the spot
   </div>
   <div class="box">
-    <strong>👤 Name:</strong> KartikGamer510<br>
+    <strong>👤 Name:</strong> No Candidate Available<br>
     <strong>🎯 Goal:</strong> Register yourself to claim the spot
   </div>
   <div class="box">
