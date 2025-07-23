@@ -99,341 +99,224 @@
     form button:hover {
       background-color: #00ddaa;
     }
-.voting-wrapper {
-  position: relative;
-  opacity: 1;
-  pointer-events: auto;
-}
     footer p {
-  margin: 5px 0;
+      margin: 5px 0;
     }
-  .firework, .petal {
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    animation-fill-mode: forwards;
-  }
-
-  @keyframes firework {
-    0% { transform: scale(0.2); opacity: 1; }
-    100% { transform: scale(1.5); opacity: 0; }
-  }
-
-  @keyframes fall {
-    0% {
-      transform: translateY(-10vh) rotate(0deg);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(100vh) rotate(360deg);
-      opacity: 0;
-    }
-  }
   </style>
 </head>
 <body>
   <header>
     <img src="versekingdom.jpg" alt="Verse Kingdom Logo">
     <h1>🏰 VersaKingdom - Minecraft Eternal Server 🛡️</h1>
-<div id="server-status" style="margin-top: 10px; font-size: 1.1rem;">
-  <span><strong>Status:</strong> <span id="status">Loading...</span></span><br>
-  <span><strong>Online Players:</strong> <span id="players">Loading...</span></span>
-</div>
+    <div id="server-status" style="margin-top: 10px; font-size: 1.1rem;">
+      <span><strong>Status:</strong> <span id="status">Loading...</span></span><br>
+      <span><strong>Online Players:</strong> <span id="players">Loading...</span></span>
+    </div>
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     <nav id="dropdown-menu">
-  <a href="#server-info">🌍 Server Info</a>
-  <a href="#rules">⚔️ Rules</a>
-  <a href="#election-rules">🗳️ Election Rules</a>
-  <a href="#powers">🇺🇳 King Powers</a>
-  <a href="#currency">🪙 Currency</a>
-  <a href="#registration">📝 Register</a>
-  <a href="#voting-section">🗳️ Vote</a>
-  <a href="#results">📊 Election Results</a>
-  <a href="#candidates">🎯 Candidates</a>
-  <a href="#report">📢 Report</a>
+      <a href="#server-info">🌍 Server Info</a>
+      <a href="#rules">⚔️ Rules</a>
+      <a href="#election-rules">🗳️ Election Rules</a>
+      <a href="#powers">🇺🇳 King Powers</a>
+      <a href="#currency">🪙 Currency</a>
+      <a href="#registration">📝 Register</a>
+      <a href="#voting-section">🗳️ Vote</a>
+      <a href="#results">📊 Election Results</a>
+      <a href="#candidates">🎯 Candidates</a>
+      <a href="#report">📢 Report</a>
     </nav>
   </header>
+
   <main>
     <section>
       <p>Welcome to <span class="highlight">VersaKingdom</span> – a realm of <strong>magic, machines, and mayhem</strong>! This is the official page for our Minecraft Eternal SMP server.</p>
-    </section><section id="server-info">
-  <h2>🌍 Server Information</h2>
-  <div class="box">👥 <strong>Players:</strong> 5 brave adventurers</div>
-  <div class="box">🛠️ <strong>Modpack:</strong> Minecraft Eternal</div>
-  <div class="box">🔗 <strong>Server IP:</strong> VerseKingdom.aternos.me</div>
-  <div class="box">🔑 <strong>Port:</strong> 43748</div>
-  <div class="box">✅ <strong>Version:</strong> 1.21.94.2</div>
-  <div class="box">💻 <strong>Software:</strong> Bedrock</div>
-</section>
+    </section>
 
-<section id="rules">
-  <h2>⚔️ Rules</h2>
-  <ul>
-    <li>Be respectful</li>
-    <li>No griefing or stealing</li>
-    <li>Help each other</li>
-    <li>Have fun and survive the madness!</li>
-  </ul>
-</section>
+    <section id="server-info">
+      <h2>🌍 Server Information</h2>
+      <div class="box">👥 <strong>Players:</strong> 5 brave adventurers</div>
+      <div class="box">🛠️ <strong>Modpack:</strong> Minecraft Eternal</div>
+      <div class="box">🔗 <strong>Server IP:</strong> VerseKingdom.aternos.me</div>
+      <div class="box">🔑 <strong>Port:</strong> 43748</div>
+      <div class="box">✅ <strong>Version:</strong> 1.21.94.2</div>
+      <div class="box">💻 <strong>Software:</strong> Bedrock</div>
+    </section>
 
-<section id="election-rules">
-  <h2>🗳️ Server Election Rules</h2>
-  <ol>
-    <li>Each member must give his/her vote.</li>
-    <li>Voting shall only be conducted on the official Website of VerseKingdom and not on WhatsApp or Minecraft.</li>
-    <li>Candidates must register through Website registration form.</li>
-    <li>Votes are cast using Voter ID and Minecraft Username.</li>
-    <li>Any malpractice results in temporary ban.</li>
-  </ol>
-</section>
+    <section id="rules">
+      <h2>⚔️ Rules</h2>
+      <ul>
+        <li>Be respectful</li>
+        <li>No griefing or stealing</li>
+        <li>Help each other</li>
+        <li>Have fun and survive the madness!</li>
+      </ul>
+    </section>
 
-<section id="powers">
-  <h2>🇺🇳 Powers of the Elected King</h2>
-  <ul>
-    <li>The elected is titled "King" and forms a government.</li>
-    <li>Can arrest, execute, and timeout citizens.</li>
-    <li>Responsible for citizens' hunger, wealth, housing.</li>
-    <li>Controls Neutral Land.</li>
-    <li>Holds power for 3 weeks.</li>
-    <li>Citizens can overthrow misuse of power.</li>
-    <li>Can add/remove 1 law per week.</li>
-    <li>Can collect tax and improve the Kingdom.</li>
-  </ul>
-</section>
+    <section id="election-rules">
+      <h2>🗳️ Server Election Rules</h2>
+      <ol>
+        <li>Each member must give his/her vote.</li>
+        <li>Voting shall only be conducted on the official Website of VerseKingdom and not on WhatsApp or Minecraft.</li>
+        <li>Candidates must register through Website registration form.</li>
+        <li>Votes are cast using Voter ID and Minecraft Username.</li>
+        <li>Any malpractice results in temporary ban.</li>
+      </ol>
+    </section>
 
-<section id="currency">
-  <h2>🪙 Currency & Exchange Rate</h2>
-  <p>The main currency is <strong>Iron</strong>.</p>
-  <ul>
-    <li>10 Iron = 1 Diamond</li>
-    <li>1 Diamond = 40 Coal</li>
-    <li>10 Iron = 2 Emerald</li>
-  </ul>
-</section>
+    <section id="powers">
+      <h2>🇺🇳 Powers of the Elected King</h2>
+      <ul>
+        <li>The elected is titled "King" and forms a government.</li>
+        <li>Can arrest, execute, and timeout citizens.</li>
+        <li>Responsible for citizens' hunger, wealth, housing.</li>
+        <li>Controls Neutral Land.</li>
+        <li>Holds power for 3 weeks.</li>
+        <li>Citizens can overthrow misuse of power.</li>
+        <li>Can add/remove 1 law per week.</li>
+        <li>Can collect tax and improve the Kingdom.</li>
+      </ul>
+    </section>
 
-<section id="registration" style="position: relative;">
-  <h2>🗳️ Election Registration</h2>
-  <div style="opacity: 0.4; pointer-events: none; position: relative;">
-    <form action="https://formspree.io/f/xvgqggzo" method="POST">
-      <label for="name">Your Real Name:</label>
-      <input type="text" id="name" name="name" required>
-      <label for="username">Minecraft Username:</label>
-      <input type="text" id="username" name="username" required>
-      <label for="reason">Why do you want to be King?</label>
-      <textarea id="reason" name="reason"></textarea>
-      <label for="contact">Discord or Email (optional):</label>
-      <input type="text" id="contact" name="contact">
-      <button type="submit" disabled>Register</button>
-    </form>
-    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.8); color: white; font-size: 2em; display: flex; justify-content: center; align-items: center; z-index: 10;">
-      🔒 REGISTRATION CLOSED
-    </div>
-  </div>
-</section>
+    <section id="currency">
+      <h2>🪙 Currency & Exchange Rate</h2>
+      <p>The main currency is <strong>Iron</strong>.</p>
+      <ul>
+        <li>10 Iron = 1 Diamond</li>
+        <li>1 Diamond = 40 Coal</li>
+        <li>10 Iron = 2 Emerald</li>
+      </ul>
+    </section>
 
-<section id="voting-section">
-  <h2>🗳️ Vote for Your King</h2>
-  <div style="opacity: 0.4; pointer-events: none; position: relative;">
-    <form action="https://formspree.io/f/xqalaaby" method="POST">
-      <label for="voter-id">Please Enter Your Voter ID:</label>
-      <input type="text" id="voter-id" name="voter-id" required>
-      <label for="voter">Your Minecraft Username:</label>
-      <input type="text" id="voter" name="voter" required>
-      <label for="vote">Who do you vote for?</label>
-      <select id="vote" name="vote" required>
-        <option value="">-- Select Candidate --</option>
-        <option value="KITOFHAND2">KITOFHAND2</option>
-        <option value="KARTIK GAMER510">KARTIK GAMER510</option>
-      </select>
-      <button type="submit" disabled>Vote</button>
-    </form>
-    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.8); color: white; font-size: 2em; display: flex; justify-content: center; align-items: center; z-index: 10;">
-      🔒 VOTING CLOSED
-    </div>
-  </div>
-</section>
+    <section id="registration">
+      <h2>🗳️ Election Registration</h2>
+      <div style="opacity: 0.4; pointer-events: none; position: relative;">
+        <form>
+          <label for="name">Your Real Name:</label>
+          <input type="text" id="name" name="name" required disabled>
+          <label for="username">Minecraft Username:</label>
+          <input type="text" id="username" name="username" required disabled>
+          <label for="reason">Why do you want to be King?</label>
+          <textarea id="reason" name="reason" disabled></textarea>
+          <label for="contact">Discord or Email (optional):</label>
+          <input type="text" id="contact" name="contact" disabled>
+          <button type="submit" disabled>Register</button>
+        </form>
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.8); color: white; font-size: 2em; display: flex; justify-content: center; align-items: center; z-index: 10;">
+          🔒 REGISTRATION CLOSED
+        </div>
+      </div>
+    </section>
+
+    <section id="voting-section">
+      <h2>🗳️ Vote for Your King</h2>
+      <div style="opacity: 0.4; pointer-events: none; position: relative;">
+        <form>
+          <label for="voter-id">Please Enter Your Voter ID:</label>
+          <input type="text" id="voter-id" name="voter-id" required disabled>
+          <label for="voter">Your Minecraft Username:</label>
+          <input type="text" id="voter" name="voter" required disabled>
+          <label for="vote">Who do you vote for?</label>
+          <select id="vote" name="vote" disabled required>
+            <option value="">-- No Candidates Available --</option>
+          </select>
+          <button type="submit" disabled>Vote</button>
+        </form>
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.8); color: white; font-size: 2em; display: flex; justify-content: center; align-items: center; z-index: 10;">
+          🔒 VOTING CLOSED
+        </div>
+      </div>
+    </section>
+
     <section id="results">
-  <h2>📊 Official Voting Results</h2>
-  <div id="result-declaration" class="box"></div>
-</section>
+      <h2>📊 Official Voting Results</h2>
+      <div id="result-declaration" class="box"></div>
+    </section>
 
-<script>
-  // Set vote counts here
-  const candidate1 = { name: "KITOFHAND2", votes: 2 };
-  const candidate2 = { name: "KARTIK GAMER510", votes: 3 };
-
-  const resultContainer = document.getElementById("result-declaration");
-
-  let resultHTML = "";
-
-  if (candidate1.votes > candidate2.votes) {
-    resultHTML = `
-      <div style="color: #4caf50; font-weight: bold; font-size: 1.2rem;">
-        🎉 ${candidate1.name} has been elected King!
+    <section id="candidates">
+      <h2>🎯 Candidates & Their Goals</h2>
+      <div class="box">
+        <strong>👤 Name:</strong> No Candidate Available<br>
+        <strong>🎯 Goal:</strong> Register yourself to claim the spot
       </div>
-      <div>${candidate1.name}: ${candidate1.votes} votes<br>${candidate2.name}: ${candidate2.votes} votes</div>
-    `;
-  } else if (candidate2.votes > candidate1.votes) {
-    resultHTML = `
-      <div style="color: #4caf50; font-weight: bold; font-size: 1.2rem;">
-        🎉 ${candidate2.name} has been elected King!
+      <div class="box">
+        <strong>👤 Name:</strong> No Candidate Available<br>
+        <strong>🎯 Goal:</strong> Register yourself to claim the spot
       </div>
-      <div>${candidate1.name}: ${candidate1.votes} votes<br>${candidate2.name}: ${candidate2.votes} votes</div>
-    `;
-  } else {
-    resultHTML = `
-      <div style="color: gold; font-weight: bold; font-size: 1.2rem;">
-        🤝 It's a tie! Re-vote may be needed.
+      <div class="box">
+        <strong>👤 Name:</strong> No Candidate Available<br>
+        <strong>🎯 Goal:</strong> Register yourself to claim the spot
       </div>
-      <div>${candidate1.name}: ${candidate1.votes} votes<br>${candidate2.name}: ${candidate2.votes} votes</div>
-    `;
-  }
+    </section>
 
-  resultContainer.innerHTML = resultHTML;
-</script>
+    <section id="report">
+      <h2>📢 Report / Feedback / Help</h2>
+      <form action="https://formspree.io/f/xnnznnlj" method="POST">
+        <label for="type">What is this about?</label>
+        <select id="type" name="type" required>
+          <option value="report">Report an Issue</option>
+          <option value="feedback">Give Feedback</option>
+          <option value="help">Request Help</option>
+        </select>
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required>
+        <label for="message">Describe your concern:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        <label for="contact">Your Discord or Email (optional):</label>
+        <input type="text" id="contact" name="contact">
+        <button type="submit">Submit</button>
+      </form>
+    </section>
 
-<section id="candidates">
-  <h2>🎯 Candidates & Their Goals</h2>
-  <div class="box">
-    <strong>👤 Name:</strong> No Candidate Available<br>
-    <strong>🎯 Goal:</strong> Register yourself to claim the spot
-  </div>
-  <div class="box">
-    <strong>👤 Name:</strong> No Candidate Available<br>
-    <strong>🎯 Goal:</strong> Register yourself to claim the spot
-  </div>
-  <div class="box">
-    <strong>👤 Name:</strong> No Candidate Available<br>
-    <strong>🎯 Goal:</strong> Register yourself to claim the spot
-  </div>
-</section>
-
-<section id="report">
-  <h2>📢 Report / Feedback / Help</h2>
-  <form action="https://formspree.io/f/xnnznnlj" method="POST">
-    <label for="type">What is this about?</label>
-    <select id="type" name="type" required>
-      <option value="report">Report an Issue</option>
-      <option value="feedback">Give Feedback</option>
-      <option value="help">Request Help</option>
-    </select>
-    <label for="subject">Subject:</label>
-    <input type="text" id="subject" name="subject" required>
-    <label for="message">Describe your concern:</label>
-    <textarea id="message" name="message" rows="4" required></textarea>
-    <label for="contact">Your Discord or Email (optional):</label>
-    <input type="text" id="contact" name="contact">
-    <button type="submit">Submit</button>
-  </form>
-</section>
-
-<section>
-  <p><em>Let the adventure begin!</em></p>
-</section>
-
+    <section>
+      <p><em>Let the adventure begin!</em></p>
+    </section>
   </main>
+
   <script>
     async function fetchServerStatus() {
-  try {
-    const response = await fetch("https://api.mcsrvstat.us/bedrock/2/VerseKingdom.aternos.me:43748");
-    const data = await response.json();
+      try {
+        const response = await fetch("https://api.mcsrvstat.us/bedrock/2/VerseKingdom.aternos.me:43748");
+        const data = await response.json();
+        const status = document.getElementById("status");
+        const players = document.getElementById("players");
 
-    const status = document.getElementById("status");
-    const players = document.getElementById("players");
-
-    if (data.online) {
-      status.textContent = "🟢 Online";
-      players.textContent = `${data.players.online} / ${data.players.max}`;
-    } else {
-      status.textContent = "🔴 Offline";
-      players.textContent = "0";
-    }
-  } catch (err) {
-    document.getElementById("status").textContent = "❌ Error";
-    document.getElementById("players").textContent = "Unknown";
-  }
-}
-
-fetchServerStatus();
-setInterval(fetchServerStatus, 10000); // update every 10 seconds
-
-  </script>
-  <footer style="background-color: #2c2c3d; color: #888; padding: 20px; text-align: center; font-size: 0.9rem; margin-top: 50px;">
-  <p>Verse Kingdom © 2025</p>
-  <p>⏳ Live player count and countdown timers may experience slight delays.</p>
-  <p>🧱 This is a community fan project. Not affiliated with Mojang or Aternos.</p>
-  <p>📞 Contact us via Report/feedback/help Section.</p>
-  </footer>
-  <script>
-  function toggleMenu() {
-    const menu = document.getElementById("dropdown-menu");
-    if (menu.style.display === "block") {
-      menu.style.display = "none";
-    } else {
-      menu.style.display = "block";
-    }
-  }
-  </script>
-  <script>
-  function launchFireworks() {
-    for (let i = 0; i < 10; i++) {
-      const firework = document.createElement('div');
-      firework.className = 'firework';
-      firework.style.width = '15px';
-      firework.style.height = '15px';
-      firework.style.borderRadius = '50%';
-      firework.style.background = `hsl(${Math.random() * 360}, 100%, 60%)`;
-      firework.style.left = `${Math.random() * 100}%`;
-      firework.style.top = `${Math.random() * 50 + 10}%`;
-      firework.style.animation = 'firework 1s ease-out';
-      document.body.appendChild(firework);
-      setTimeout(() => firework.remove(), 1000);
-    }
-  }
-
-  function dropPetals() {
-    for (let i = 0; i < 20; i++) {
-      const petal = document.createElement('div');
-      petal.className = 'petal';
-      petal.innerText = '🌸';
-      petal.style.left = `${Math.random() * 100}%`;
-      petal.style.top = `-5%`;
-      petal.style.fontSize = `${Math.random() * 10 + 15}px`;
-      petal.style.animation = `fall ${Math.random() * 3 + 3}s linear`;
-      document.body.appendChild(petal);
-      setTimeout(() => petal.remove(), 6000);
-    }
-  }
-
-  // 🎯 Schedule fireworks from 2:00 PM to 2:10 PM
-  const now = new Date();
-  const start = new Date();
-  const end = new Date();
-  start.setHours(14, 0, 0, 0);   // 2:00 PM
-  end.setHours(14, 10, 0, 0);    // 2:10 PM
-
-  function startAnimationLoop() {
-    const interval = setInterval(() => {
-      const currentTime = new Date();
-      if (currentTime >= end) {
-        clearInterval(interval);
-        return;
+        if (data.online) {
+          status.textContent = "🟢 Online";
+          players.textContent = `${data.players.online} / ${data.players.max}`;
+        } else {
+          status.textContent = "🔴 Offline";
+          players.textContent = "0";
+        }
+      } catch (err) {
+        document.getElementById("status").textContent = "❌ Error";
+        document.getElementById("players").textContent = "Unknown";
       }
-      launchFireworks();
-      dropPetals();
-    }, 5000); // Every 5 seconds
-  }
+    }
 
-  if (now >= end) {
-    // Past 2:10 PM – do nothing
-  } else if (now >= start) {
-    // Between 2:00 and 2:10 – start immediately
-    startAnimationLoop();
-  } else {
-    // Before 2:00 PM – wait until 2:00 to start
-    const delay = start - now;
-    setTimeout(startAnimationLoop, delay);
-  }
+    fetchServerStatus();
+    setInterval(fetchServerStatus, 10000);
   </script>
+
+  <script>
+    const resultContainer = document.getElementById("result-declaration");
+    resultContainer.innerHTML = `
+      <div style="color: gold; font-weight: bold; font-size: 1.2rem;">
+        ⚠️ No candidates registered. Election not held.
+      </div>`;
+  </script>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("dropdown-menu");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+  </script>
+
+  <footer style="background-color: #2c2c3d; color: #888; padding: 20px; text-align: center; font-size: 0.9rem; margin-top: 50px;">
+    <p>Verse Kingdom © 2025</p>
+    <p>⏳ Live player count and countdown timers may experience slight delays.</p>
+    <p>🧱 This is a community fan project. Not affiliated with Mojang or Aternos.</p>
+    <p>📞 Contact us via Report/feedback/help Section.</p>
+  </footer>
 </body>
 </html>
