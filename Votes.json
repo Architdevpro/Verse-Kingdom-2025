@@ -4,7 +4,6 @@
     { "voter_id": "VAI*********", "status": "USED", "note": "<li saved and Encrypted on Formspree /li>" },
     { "voter_id": "VIT*********", "status": "USED", "note": "<li saved and Encrypted on Formspree /li>" },
     { "voter_id": "ARC*********", "status": "USED", "note": "<li saved and Encrypted on Formspree /li>" },
-    { "voter_id": "TUS*********", "status": "USED", "note": "<li saved and Encrypted on Formspree /li>" }
   ],
   "fetch_log_denied": "https://formspree.io/f/encrypted_files_blocked",
   "players_denied": [
@@ -16,7 +15,7 @@
     { "voter_id": "KAS*********", "status": "UNUSED", "note": "<li saved and Encrypted on Formspree /li>" },
     { "voter_id": "ANA*********", "status": "UNUSED", "note": "<li saved and Encrypted on Formspree /li>" },
     { "voter_id": "ADA*********", "status": "UNUSED", "note": "<li saved and Encrypted on Formspree /li>" },
-    { "voter_id": "RIS*********", "status": "UNUSED", "note": "<li saved and Encrypted on Formspree /li>" }
-    { "voter_id": "TUS*********", "status": "USED", "note": "<li saved and Encrypted on Formspree /li>" }
+    { "voter_id": "RIS*********", "status": "UNUSED", "note": "<li saved and Encrypted on Formspree /li>" },
+    { "voter_id": "TUS*********", "status": "UNUSED", "note": "<li saved and Encrypted on Formspree /li>" }
   ]
 }
