@@ -1,0 +1,19 @@
+DOCTYPE "HTML"
+fetch= "https:formspree.io/f/versekingdom_encrypted_files" method "POST"
+<--- Players Voted used --->
+fetch= "https://formspree.io/f/encrypted_files"
+VAI*********- "USED" <li saved and Encrypted on Formspree /li> 
+VIT*********- "USED" <li saved and Encrypted on Formspree /li>
+ARC*********- "USED" <li saved and Encrypted on Formspree /li>
+TUS*********- "USED" <li saved and Encrypted on Formspree /li>
+<--- Players Votes Denied --->
+fetch= "https://formspree.io/f/encrypted_files_blocked"
+RUD*********- "DENIED" <li saved and Encrypted on Formspree /li>
+KAR*********- "DENIED" <li saved and Encrypted on Formspree /li>
+SAK*********- "DENIED" <li saved and Encrypted on Formspree /li>
+
+<--- Players Votes unused --->
+KAS*********- "UNUSED" <li saved and Encrypted on Formspree /li>
+ANA*********- "UNUSED" <li saved and Encrypted on Formspree /li>
+ADA*********- "UNUSED" <li saved and Encrypted on Formspree /li>
+RIS*********- "UNUSED" <li saved and Encrypted on Formspree /li>
