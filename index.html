@@ -187,7 +187,7 @@
       </ul>
     </section>
 
-<section id="registration">
+<section id="registration" style="position: relative; opacity: 0.5; pointer-events: none;">
   <h2>🗳️ Election Registration</h2>
   <form action="https://formspree.io/f/xqalaaby" method="POST">
     <label for="name">Your Real Name:</label>
@@ -200,26 +200,46 @@
     <input type="text" id="contact" name="contact">
     <button type="submit">Register</button>
   </form>
+
+  <!-- Overlay -->
+  <div style="
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    pointer-events: all;
+  ">
+    🔒 Registration Closed
+  </div>
 </section>
 
     <section id="voting-section">
-      <h2>🗳️ Vote for Your King</h2>
-      <div style="opacity: 0.4; pointer-events: none; position: relative;">
-        <form>
-          <label for="voter-id">Please Enter Your Voter ID:</label>
-          <input type="text" id="voter-id" name="voter-id" required disabled>
-          <label for="voter">Your Minecraft Username:</label>
-          <input type="text" id="voter" name="voter" required disabled>
-          <label for="vote">Who do you vote for?</label>
-          <select id="vote" name="vote" disabled required>
-            <option value="">-- No Candidates Available --</option>
-          </select>
-          <button type="submit" disabled>Vote</button>
-        </form>
-        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.8); color: white; font-size: 2em; display: flex; justify-content: center; align-items: center; z-index: 10;">
-          🔒 VOTING CLOSED
-        </div>
-      </div>
+  <h2>🗳️ Vote for Your King</h2>
+  <div style="position: relative;">
+    <form action="https://formspree.io/f/LINK-HERE" method="POST">
+      <label for="voter-id">Please Enter Your Voter ID:</label>
+      <input type="text" id="voter-id" name="voter-id" required>
+      
+      <label for="voter">Your Minecraft Username:</label>
+      <input type="text" id="voter" name="voter" required>
+      
+      <label for="vote">Who do you vote for?</label>
+      <select id="vote" name="vote" required>
+        <option value="">-- Select a Candidate --</option>
+        <option value="KITOFHAND2">KITOFHAND2- Archit Chaudhary</option>
+        <option value="Vaibhav1913">Vaibhav1913- Vaibhav Jaiswal</option>
+        <option value="BraveDrawf5981">BraveDrawf5981- Tushar Kumar</option>
+      </select>
+      
+      <button type="submit">Vote</button>
+    </form>
+  </div>
     </section>
 
     <section id="results">
