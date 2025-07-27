@@ -17,5 +17,6 @@
     { "voter_id": "ANA*********", "status": "UNUSED", "note": "<li saved and Encrypted on Formspree /li>" },
     { "voter_id": "ADA*********", "status": "UNUSED", "note": "<li saved and Encrypted on Formspree /li>" },
     { "voter_id": "RIS*********", "status": "UNUSED", "note": "<li saved and Encrypted on Formspree /li>" }
+    { "voter_id": "TUS*********", "status": "USED", "note": "<li saved and Encrypted on Formspree /li>" }
   ]
 }
