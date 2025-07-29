@@ -219,10 +219,32 @@
   </div>
 </section>
 
-    <section id="voting-section">
+<section id="voting-section">
   <h2>🗳️ Vote for Your King</h2>
   <div style="position: relative;">
-    <form action="https://formspree.io/f/xqalaaby" method="POST">
+
+    <!-- Overlay to disable the form -->
+    <div style="
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5em;
+      font-weight: bold;
+      z-index: 10;
+      border-radius: 8px;
+    ">
+      🔒 VOTING CLOSED
+    </div>
+
+    <!-- The actual form (disabled via overlay) -->
+    <form action="https://formspree.io/f/xqalaaby" method="POST" style="filter: blur(2px); pointer-events: none;">
       <label for="voter-id">Please Enter Your Voter ID:</label>
       <input type="text" id="voter-id" name="voter-id" required>
       
@@ -240,6 +262,8 @@
       <button type="submit">Vote</button>
     </form>
   </div>
+</section>
+
     </section>
     <section id="results">
       <h2>📊 Official Voting Results</h2>
