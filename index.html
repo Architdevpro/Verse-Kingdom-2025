@@ -307,8 +307,7 @@
   <div class="box">
     <h3 style="color: #ff4d4d;">⛔ Banned Players</h3>
     <ul>
-      <say>No Banned Player as of 09/08/2025</say>
-      <!-- Add more banned players with reasons -->
+  <li class="no-bullet">No Banned Player as of 09/08/2025</li>
     </ul>
   </div>
  <div class="box">
@@ -392,5 +391,65 @@
     <p>🧱 This is a community fan project. Not affiliated with Mojang or Aternos.</p>
     <p>📞 Contact us via Report/feedback/help Section.</p>
   </footer>
+  <style>
+  /* Full-screen overlay */
+  #maintenance-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5); /* dim background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+
+  /* Pop-up box */
+  #maintenance-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  /* Heading in red */
+  #maintenance-box h2 {
+    color: red;
+    margin-bottom: 10px;
+  }
+
+  /* OKAY button */
+  #maintenance-ok {
+    background: #007BFF;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  #maintenance-ok:hover {
+    background: #0056b3;
+  }
+</style>
+
+<div id="maintenance-overlay">
+  <div id="maintenance-box">
+    <h2>Maintenance</h2>
+    <p>The website is currently under maintenance and may work slowly.</p>
+    <button id="maintenance-ok">OKAY</button>
+  </div>
+</div>
+
+<script>
+  document.getElementById("maintenance-ok").addEventListener("click", function() {
+    document.getElementById("maintenance-overlay").style.display = "none";
+  });
+</script>
 </body>
 </html>
