@@ -1,21 +1,25 @@
+<--- invalid code, kept only for past logs --->
 {
   "fetch_log_used": "https://formspree.io/f/versekingdom_encrypted_files",
   "players_voted": [
-    { "voter_id": "VAI*********", "status": "USED", "note": "<li saved and Encrypted on Formspree /li>" },
-    { "voter_id": "VIT*********", "status": "USED", "note": "<li saved and Encrypted on Formspree /li>" },
-    { "voter_id": "ARC*********", "status": "USED", "note": "<li saved and Encrypted on Formspree /li>" },
+    "<li insufficient data or no feed,no logs data /li>"
   ],
   "fetch_log_denied": "https://formspree.io/f/encrypted_files_blocked",
   "players_denied": [
-    { "voter_id": "RUD*********", "status": "DENIED", "note": "<li saved and Encrypted on Formspree /li>" },
-    { "voter_id": "KAR*********", "status": "DENIED", "note": "<li saved and Encrypted on Formspree /li>" },
-    { "voter_id": "SAK*********", "status": "DENIED", "note": "<li saved and Encrypted on Formspree /li>" }
+    "<li insufficient data or no feed,no logs data /li>" },
   ],
   "players_unused": [
+    <--- all IDs are now invalid and are only kept for past logs --->
     { "voter_id": "KAS*********", "status": "UNUSED", "note": "<li saved and Encrypted on Formspree /li>" },
     { "voter_id": "ANA*********", "status": "UNUSED", "note": "<li saved and Encrypted on Formspree /li>" },
     { "voter_id": "ADA*********", "status": "UNUSED", "note": "<li saved and Encrypted on Formspree /li>" },
     { "voter_id": "RIS*********", "status": "UNUSED", "note": "<li saved and Encrypted on Formspree /li>" },
-    { "voter_id": "TUS*********", "status": "UNUSED", "note": "<li saved and Encrypted on Formspree /li>" }
+    { "voter_id": "TUS*********", "status": "UNUSED", "note": "<li saved and Encrypted on Formspree /li>" },
+    { "voter_id": "VAI*********", "status": "UNUSED", "note": "<li saved and Encrypted on Formspree /li>" },
+    { "voter_id": "VIT*********", "status": "UNUSED", "note": "<li saved and Encrypted on Formspree /li>" },
+    { "voter_id": "ARC*********", "status": "UNUSED", "note": "<li saved and Encrypted on Formspree /li>" },
+    { "voter_id": "RUD*********", "status": "UNUSED", "note": "<li saved and Encrypted on Formspree /li>" },
+    { "voter_id": "KAR*********", "status": "UNUSED", "note": "<li saved and Encrypted on Formspree /li>" },
+    { "voter_id": "SAK*********", "status": "UNUSED", "note": "<li saved and Encrypted on Formspree /li>" }
   ]
 }
