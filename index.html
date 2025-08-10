@@ -102,7 +102,30 @@
     footer p {
       margin: 5px 0;
     }
-  </style>
+#adminBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 100px; /* bigger so text fits */
+    height: 100px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.3);
+}
+  }
+  #admin-btn:hover {
+    background-color: #cc5200;
+  }
+</style>
 </head>
 <body>
   <header>
@@ -476,6 +499,32 @@ checkLogs();
     <p>🧱 This is a community fan project. Not affiliated with Mojang or Aternos.</p>
     <p>📞 Contact us via Report/feedback/help Section.</p>
   </footer>
+<button id="admin-btn">Admin<br>Panel</button>
 
+<script>
+  document.getElementById("admin-btn").addEventListener("click", function() {
+    const username = prompt("Enter Username:");
+    const password = prompt("Enter Password:");
+    const email = prompt("Enter Email:");
+    const mcpeUser = prompt("Enter MCPE Username:");
+
+    // Set your correct details here
+    const correctUsername = "verseadmin123456789archit";
+    const correctPassword = "90perverse123456789archit";
+    const correctEmail = "architchoudharybcs@gmail.com";
+    const correctMCPE = "KITOFHAND2";
+
+    if (
+      username === correctUsername &&
+      password === correctPassword &&
+      email === correctEmail &&
+      mcpeUser === correctMCPE
+    ) {
+      window.location.href = "admin.html";
+    } else {
+      alert("Incorrect details! Access denied.");
+    }
+  });
+</script>
 </body>
 </html>
