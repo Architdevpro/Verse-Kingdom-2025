@@ -410,17 +410,11 @@
 
 <div id="maintenance-overlay">
   <div id="maintenance-box">
-    <h2>Maintenance</h2>
+    <h2>Maintenance(V 1.0.2)</h2>
     <p>The site is currently under maintenance and may work slowly. Some features might be temporarily unavailable.</p>
     <button id="maintenance-ok">OKAY</button>
   </div>
 </div>
-
-<script>
-  document.getElementById("maintenance-ok").addEventListener("click", function() {
-    document.getElementById("maintenance-overlay").style.display = "none";
-  });
-</script>
 
   <script>
     async function fetchServerStatus() {
@@ -462,30 +456,12 @@
     }
   </script>
 
-  <script>
-async function checkLogs() {
-  const res = await fetch("https://raw.githubusercontent.com/YourGitHubUsername/YourRepoName/main/logs.json");
-  const data = await res.json();
-
-  if (data.maintenance) {
-    document.body.innerHTML = '<h1 style="color:white;text-align:center;margin-top:100px;">🚧 Maintenance Mode</h1>';
-  }
-  if (data.forceRefresh) {
-    location.reload();
-  }
-  console.log("Ban Suggestions:", data.banSuggestions);
-}
-setInterval(checkLogs, 5000);
-checkLogs();
-  </script>
-
   <footer style="background-color: #2c2c3d; color: #888; padding: 20px; text-align: center; font-size: 0.9rem; margin-top: 50px;">
     <p>Verse Kingdom © 2025</p>
     <p>⏳ Live player count and countdown timers may experience slight delays.</p>
     <p>🧱 This is a community fan project. Not affiliated with Mojang or Aternos.</p>
     <p>📞 Contact us via Report/feedback/help Section.</p>
   </footer>
-<button id="admin-btn">Admin<br>Panel</button>
 
   <script>
   const bankBtn = document.getElementById('bank-btn');
