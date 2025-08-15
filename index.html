@@ -402,44 +402,8 @@
     <p>🌐 Website V 1.0.3</p>
   </footer>
 
-  <script>
-  const bankBtn = document.getElementById('bank-btn');
-  const bankOverlay = document.getElementById('bank-overlay');
-  const bankClose = document.getElementById('bank-close');
-  const bankContent = document.getElementById('bank-content');
 
-  bankBtn.addEventListener('click', () => {
-    bankOverlay.style.display = 'block';
-    loadBankRecords(); // Load records dynamically
-  });
-
-  bankClose.addEventListener('click', () => {
-    bankOverlay.style.display = 'none';
-  });
-
-  function loadBankRecords() {
-    // Example player data; replace with your dynamic data source
-    const players = [
-      { username: 'No player', items: 0, loan: 0 },
-      { username: 'No player', items: 0, loan: 0 },
-      { username: 'No player', items: 0, loan: 0 }
-    ];
-
-    bankContent.innerHTML = '';
-    players.forEach(player => {
-      const record = document.createElement('div');
-      record.className = 'box';
-      record.innerHTML = `
-        <strong>👤 Player:</strong> ${player.username}<br>
-        <strong>📦 Items Submitted:</strong> ${player.items}<br>
-        <strong>💰 Loan Taken:</strong> ${player.loan}
-      `;
-      bankContent.appendChild(record);
-    });
-  }
-  </script>
-  
-<!-- Bank Trigger -->
+  <!-- Bank Trigger -->
 <button id="bank-btn" title="Go to Bank of Verse Kingdom 🏦" style="
   position: fixed;
   bottom: 140px;
@@ -456,6 +420,7 @@
   justify-content: center;
   align-items: center;
   box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  z-index: 10000;
 ">
 📖 Bank
 </button>
@@ -478,6 +443,7 @@
     background: #2c2c3d;
     border-radius: 15px;
     padding: 20px;
+    position: relative;
   ">
     <h2 style="text-align:center; color: gold;">🏦 Bank of Verse Kingdom</h2>
     <button id="bank-close" style="
@@ -495,5 +461,44 @@
     </div>
   </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const bankBtn = document.getElementById('bank-btn');
+  const bankOverlay = document.getElementById('bank-overlay');
+  const bankClose = document.getElementById('bank-close');
+  const bankContent = document.getElementById('bank-content');
+
+  bankBtn.addEventListener('click', () => {
+    bankOverlay.style.display = 'block';
+    loadBankRecords();
+  });
+
+  bankClose.addEventListener('click', () => {
+    bankOverlay.style.display = 'none';
+  });
+
+  function loadBankRecords() {
+    const players = [
+      { username: 'No player', items: 0, loan: 0 },
+      { username: 'No player', items: 0, loan: 0 },
+      { username: 'No player', items: 0, loan: 0 }
+    ];
+
+    bankContent.innerHTML = '';
+    players.forEach(player => {
+      const record = document.createElement('div');
+      record.className = 'box';
+      record.innerHTML = `
+        <strong>👤 Player:</strong> ${player.username}<br>
+        <strong>📦 Items Submitted:</strong> ${player.items}<br>
+        <strong>💰 Loan Taken:</strong> ${player.loan}
+      `;
+      bankContent.appendChild(record);
+    });
+  }
+});
+</script>
+
 </body>
 </html>
