@@ -102,6 +102,12 @@
     footer p {
       margin: 5px 0;
     }
+    #bank-content .box {
+  margin: 15px 0;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #3b3b5c;
+    }
 </style>
 </head>
 <body>
@@ -481,6 +487,43 @@ checkLogs();
   </footer>
 <button id="admin-btn">Admin<br>Panel</button>
 
+  <script>
+  const bankBtn = document.getElementById('bank-btn');
+  const bankOverlay = document.getElementById('bank-overlay');
+  const bankClose = document.getElementById('bank-close');
+  const bankContent = document.getElementById('bank-content');
+
+  bankBtn.addEventListener('click', () => {
+    bankOverlay.style.display = 'block';
+    loadBankRecords(); // Load records dynamically
+  });
+
+  bankClose.addEventListener('click', () => {
+    bankOverlay.style.display = 'none';
+  });
+
+  function loadBankRecords() {
+    // Example player data; replace with your dynamic data source
+    const players = [
+      { username: 'KITOFHAND2', items: 120, loan: 50 },
+      { username: 'Vaibhav1913', items: 90, loan: 0 },
+      { username: 'BraveDrawf5981', items: 75, loan: 20 }
+    ];
+
+    bankContent.innerHTML = '';
+    players.forEach(player => {
+      const record = document.createElement('div');
+      record.className = 'box';
+      record.innerHTML = `
+        <strong>👤 Player:</strong> ${player.username}<br>
+        <strong>📦 Items Submitted:</strong> ${player.items}<br>
+        <strong>💰 Loan Taken:</strong> ${player.loan}
+      `;
+      bankContent.appendChild(record);
+    });
+  }
+  </script>
+  
 <!-- Bank Trigger -->
 <button id="bank-btn" title="Go to Bank of Verse Kingdom 🏦" style="
   position: fixed;
