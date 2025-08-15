@@ -509,23 +509,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Placeholder players with zero / no player
   const players = [
-    { username: 'KITOFHAND2', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
-    { username: 'Vaibhav1913', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
-    { username: 'BraveDrawf5981', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
-    { username: 'LaterPower58723', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
-    { username: 'Kapoor2491', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
-    { username: 'Vidit 5892', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
-    { username: 'Hyper07 5478', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
-    { username: 'HiperDhruv', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
-    { username: 'Kartik Gamer510', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
-    { username: 'RUDRA C1 MC', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
-    { username: 'Adarshworrior23', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
-    { username: 'Gardenfire65866', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
-    { username: 'Vansh1093kumar', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
-    { username: 'AdriftRex182135', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
-    { username: 'KnownCandy19265', items: 5, loan: 0, itemsDetails: [ 5 Diamonds(15/08/2025) ], loanDetails: [] },
-  ];
-
+  { username: 'KITOFHAND2', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
+  { username: 'Vaibhav1913', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
+  { username: 'BraveDrawf5981', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
+  { username: 'LaterPower58723', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
+  { username: 'Kapoor2491', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
+  { username: 'Vidit 5892', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
+  { username: 'Hyper07 5478', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
+  { username: 'HiperDhruv', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
+  { username: 'Kartik Gamer510', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
+  { username: 'RUDRA C1 MC', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
+  { username: 'Adarshworrior23', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
+  { username: 'Gardenfire65866', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
+  { username: 'Vansh1093kumar', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
+  { username: 'AdriftRex182135', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
+  { 
+    username: 'KnownCandy19265', 
+    items: 5, 
+    loan: 0, 
+    itemsDetails: [ { item: "Diamonds", quantity: 5, interest: "15/08/2025" } ], 
+    loanDetails: [] 
+  }
+];
   bankBtn.addEventListener('click', () => {
     bankOverlay.style.display = 'block';
     loadBankRecords();
