@@ -102,12 +102,70 @@
     footer p {
       margin: 5px 0;
     }
-    #bank-content .box {
-  margin: 15px 0;
-  padding: 15px;
+#bank-btn {
+  position: fixed;
+  bottom: 140px;
+  right: 20px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #FFD700;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  z-index: 10000;
+}
+
+#bank-overlay {
+  display: none;
+  position: fixed;
+  top:0; left:0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  color: #fff;
+  z-index: 9999;
+  overflow-y: auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#bank-overlay .bank-container {
+  max-width: 90%;
+  margin: auto;
+  background: #2c2c3d;
+  border-radius: 15px;
+  padding: 20px;
+  position: relative;
+}
+
+#bank-overlay h2 {
+  text-align: center;
+  color: gold;
+  font-size: 1.5rem;
+}
+
+#bank-close {
+  position: absolute;
+  top: 10px; right: 10px;
+  background: red; color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#bank-content .box {
+  margin: 10px 0;
+  padding: 10px;
   border-radius: 10px;
   background-color: #3b3b5c;
-    }
+}
 </style>
 </head>
 <body>
@@ -402,66 +460,17 @@
     <p>🌐 Website V 1.0.4</p>
   </footer>
 
-
-  <!-- Bank Trigger -->
-<button id="bank-btn" title="Go to Bank of Verse Kingdom 🏦" style="
-  position: fixed;
-  bottom: 140px;
-  right: 20px;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-  background-color: #FFD700;
-  color: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-  z-index: 10000;
-">
-📖 Bank
-</button>
-
-<!-- Bank Overlay -->
-<div id="bank-overlay" style="
-  display: none;
-  position: fixed;
-  top:0; left:0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.9);
-  color: #fff;
-  z-index: 9999;
-  overflow-y: auto;
-  padding: 30px;
-">
-  <div style="
-    max-width: 800px;
-    margin: auto;
-    background: #2c2c3d;
-    border-radius: 15px;
-    padding: 20px;
-    position: relative;
-  ">
-    <h2 style="text-align:center; color: gold;">🏦 Bank of Verse Kingdom</h2>
-    <button id="bank-close" style="
-      position: absolute;
-      top: 20px; right: 20px;
-      background: red; color: white;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 5px;
-      cursor: pointer;
-    ">Close</button>
-
     <div id="bank-content">
       <!-- Player records will go here -->
     </div>
+<!-- Bank Overlay -->
+<div id="bank-overlay">
+  <div class="bank-container">
+    <button id="bank-close">✖ Close</button>
+    <h2>🏦 Bank of Verse Kingdom</h2>
+    <div id="bank-content"></div>
   </div>
 </div>
-
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const bankBtn = document.getElementById('bank-btn');
