@@ -468,12 +468,20 @@
     <div id="bank-content"></div>
   </div>
 </div>
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const bankBtn = document.getElementById('bank-btn');
   const bankOverlay = document.getElementById('bank-overlay');
   const bankClose = document.getElementById('bank-close');
   const bankContent = document.getElementById('bank-content');
+
+  // Placeholder players with zero / no player
+  const players = [
+    { username: 'No player', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
+    { username: 'No player', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
+    { username: 'No player', items: 0, loan: 0, itemsDetails: [], loanDetails: [] }
+  ];
 
   bankBtn.addEventListener('click', () => {
     bankOverlay.style.display = 'block';
@@ -485,26 +493,72 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function loadBankRecords() {
-    const players = [
-      { username: 'No player', items: 0, loan: 0 },
-      { username: 'No player', items: 0, loan: 0 },
-      { username: 'No player', items: 0, loan: 0 }
-    ];
-
     bankContent.innerHTML = '';
-    players.forEach(player => {
+
+    players.forEach((player, index) => {
       const record = document.createElement('div');
       record.className = 'box';
       record.innerHTML = `
         <strong>👤 Player:</strong> ${player.username}<br>
         <strong>📦 Items Submitted:</strong> ${player.items}<br>
-        <strong>💰 Loan Taken:</strong> ${player.loan}
+        <strong>💰 Loan Taken:</strong> ${player.loan}<br>
+        <button class="view-items-btn" data-index="${index}">View Items</button>
+        <button class="view-loan-btn" data-index="${index}">View Loan</button>
+        <div class="details" id="details-${index}" style="margin-top:10px; display:none;"></div>
       `;
       bankContent.appendChild(record);
+    });
+
+    // View Items button
+    document.querySelectorAll('.view-items-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = btn.getAttribute('data-index');
+        const detailsDiv = document.getElementById(`details-${idx}`);
+        const player = players[idx];
+
+        if (detailsDiv.style.display === 'block') {
+          detailsDiv.style.display = 'none';
+          btn.textContent = "View Items";
+        } else {
+          let html = '<strong>🗃️ Items Submitted:</strong><br>';
+          if (player.itemsDetails.length === 0) html += 'No items submitted yet.<br>';
+          else player.itemsDetails.forEach(item => {
+            html += `${item.item} - Quantity: ${item.quantity}, Interest: ${item.interest}<br>`;
+          });
+          detailsDiv.innerHTML = html;
+          detailsDiv.style.display = 'block';
+          btn.textContent = "Hide Items";
+        }
+      });
+    });
+
+    // View Loan button
+    document.querySelectorAll('.view-loan-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = btn.getAttribute('data-index');
+        const detailsDiv = document.getElementById(`details-${idx}`);
+        const player = players[idx];
+
+        if (detailsDiv.style.display === 'block') {
+          detailsDiv.style.display = 'none';
+          btn.textContent = "View Loan";
+        } else {
+          let html = '<strong>💵 Loan Details:</strong><br>';
+          if (player.loanDetails.length === 0) html += 'No loans taken yet.<br>';
+          else player.loanDetails.forEach(loan => {
+            html += `Date: ${loan.date}, Amount: ${loan.amount}, Interest: ${loan.interest}<br>`;
+          });
+          detailsDiv.innerHTML = html;
+          detailsDiv.style.display = 'block';
+          btn.textContent = "Hide Loan";
+        }
+      });
     });
   }
 });
 </script>
+
+<!-- Floating Bank Button -->
 <button id="bank-btn" title="Go to Bank of Verse Kingdom 🏦">
   📖 Bank
 </button>
