@@ -354,68 +354,6 @@
     </section>
   </main>
   
-  <style>
-  /* Full-screen overlay */
-  #maintenance-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5); /* dim background */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-  }
-
-  /* Pop-up box */
-  #maintenance-box {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 300px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  }
-
-  /* Heading in red */
-  #maintenance-box h2 {
-    color: red;
-    margin-bottom: 10px;
-  }
-
-  /* Body text */
-  #maintenance-box p {
-    color: black;
-    font-size: 14px;
-    margin-bottom: 15px;
-  }
-
-  /* OKAY button */
-  #maintenance-ok {
-    background: #007BFF;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-
-  #maintenance-ok:hover {
-    background: #0056b3;
-  }
-</style>
-
-<div id="maintenance-overlay">
-  <div id="maintenance-box">
-    <h2>Maintenance(V 1.0.2)</h2>
-    <p>The site is currently under maintenance and may work slowly. Some features might be temporarily unavailable.</p>
-    <button id="maintenance-ok">OKAY</button>
-  </div>
-</div>
-
   <script>
     async function fetchServerStatus() {
       try {
@@ -481,9 +419,9 @@
   function loadBankRecords() {
     // Example player data; replace with your dynamic data source
     const players = [
-      { username: 'KITOFHAND2', items: 120, loan: 50 },
-      { username: 'Vaibhav1913', items: 90, loan: 0 },
-      { username: 'BraveDrawf5981', items: 75, loan: 20 }
+      { username: 'No player', items: 0, loan: 0 },
+      { username: 'No player', items: 0, loan: 0 },
+      { username: 'No player', items: 0, loan: 0 }
     ];
 
     bankContent.innerHTML = '';
