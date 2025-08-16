@@ -524,7 +524,7 @@ document.addEventListener('DOMContentLoaded', () => {
    items: 0, 
    loan: 1, 
    itemsDetails: [], 
-   loanDetails: [ { date: "16/08/2025 — 23/08/2025", Amount: "64 Iron", interest: "12%" } ] },
+   loanDetails: [ { item: "Iron", date: "16/08/2025 — 23/08/2025", Amount: 64, interest: "12%" } ] },
   { username: 'AdriftRex182135', items: 0, loan: 0, itemsDetails: [], loanDetails: [] },
   { 
     username: 'KnownCandy19265', 
@@ -597,7 +597,7 @@ document.addEventListener('DOMContentLoaded', () => {
           let html = '<strong>💵 Loan Details:</strong><br>';
           if (player.loanDetails.length === 0) html += 'No loans taken yet.<br>';
           else player.loanDetails.forEach(loan => {
-            html += `Date: ${loan.date}, Amount: ${loan.amount}, Interest: ${loan.interest}<br>`;
+            html += `${item.item}, Date: ${loan.date}, Amount: ${loan.amount}, Interest: ${loan.interest}<br>`;
           });
           detailsDiv.innerHTML = html;
           detailsDiv.style.display = 'block';
